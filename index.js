@@ -430,7 +430,7 @@ var LANGUAGES = [
 },
 
 // ISO (deprecated)
-[], { // windows                                        
+[], { // windows
   0x0436: 'af', 0x4009: 'en-IN', 0x0487: 'rw', 0x0432: 'tn',
   0x041C: 'sq', 0x1809: 'en-IE', 0x0441: 'sw', 0x045B: 'si',
   0x0484: 'gsw', 0x2009: 'en-JM', 0x0457: 'kok', 0x041B: 'sk',
@@ -6864,7 +6864,7 @@ var DefaultShaper = (_temp = _class$4 = function () {
 
 // Trie is serialized as a Buffer in node, but here
 // we may be running in a browser so we make an Uint8Array
-var trieBuffer = require('./trieData.json');
+var trieBuffer = require('./trie.json');
 var trieData = new Uint8Array(trieBuffer.data);
 var trie = new UnicodeTrie(trieData);
 // const trie = new UnicodeTrie(require('fs').readFileSync(__dirname + '/data.trie'));

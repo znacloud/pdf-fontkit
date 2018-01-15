@@ -4,7 +4,7 @@ import UnicodeTrie from 'unicode-trie';
 
 // Trie is serialized as a Buffer in node, but here
 // we may be running in a browser so we make an Uint8Array
-const trieBuffer = require('./trieData.json');
+const trieBuffer = require('./trie.json');
 const trieData = new Uint8Array(trieBuffer.data);
 const trie = new UnicodeTrie(trieData);
 // const trie = new UnicodeTrie(require('fs').readFileSync(__dirname + '/data.trie'));
