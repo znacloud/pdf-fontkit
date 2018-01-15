@@ -40,7 +40,7 @@
     "dfa": "^1.0.0",
     "restructure": "^0.5.3",
     "tiny-inflate": "^1.0.2",
-    "unicode-properties": "git+https://github.com/Hopding/unicode-properties.git#d32b040bfcc313b29d754184b676ae38124b4510",
+    "unicode-properties": "git+https://github.com/Hopding/unicode-properties.git#2b6f4a08cb88a16f5dcee7ba33620db739679b14",
     "unicode-trie": "^0.3.0"
   },
   "devDependencies": {
