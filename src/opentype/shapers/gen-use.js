@@ -274,7 +274,10 @@ function decompose(code) {
   return decomposition;
 }
 
-fs.writeFileSync(__dirname + '/use.trie', trie.toBuffer());
+// Trie is serialized suboptimally as JSON so it can be loaded via require,
+// allowing unicode-properties to work in the browser
+fs.writeFileSync(__dirname + '/trieUse.json', JSON.stringify(trie.toBuffer()));
+// fs.writeFileSync(__dirname + '/use.trie', trie.toBuffer());
 
 let stateMachine = compile(fs.readFileSync(__dirname + '/use.machine', 'utf8'), symbols);
 let json = Object.assign({

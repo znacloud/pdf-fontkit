@@ -2,7 +2,12 @@ import DefaultShaper from './DefaultShaper';
 import unicode from 'unicode-properties';
 import UnicodeTrie from 'unicode-trie';
 
-const trie = new UnicodeTrie(require('fs').readFileSync(__dirname + '/data.trie'));
+// Trie is serialized as a Buffer in node, but here
+// we may be running in a browser so we make an Uint8Array
+const trieBuffer = require('./trieData.json');
+const trieData = new Uint8Array(trieBuffer.data);
+const trie = new UnicodeTrie(trieData);
+// const trie = new UnicodeTrie(require('fs').readFileSync(__dirname + '/data.trie'));
 const FEATURES = ['isol', 'fina', 'fin2', 'fin3', 'medi', 'med2', 'init'];
 
 const ShapingClasses = {

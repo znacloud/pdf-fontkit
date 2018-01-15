@@ -200,7 +200,10 @@ for (let i = 0; i < codepoints.length; i++) {
   }
 }
 
-fs.writeFileSync(__dirname + '/indic.trie', trie.toBuffer());
+// Trie is serialized suboptimally as JSON so it can be loaded via require,
+// allowing unicode-properties to work in the browser
+fs.writeFileSync(__dirname + '/trieIndic.json', JSON.stringify(trie.toBuffer()));
+// fs.writeFileSync(__dirname + '/indic.trie', trie.toBuffer());
 
 let stateMachine = compile(fs.readFileSync(__dirname + '/indic.machine', 'utf8'), symbols);
 fs.writeFileSync(__dirname + '/indic.json', JSON.stringify(stateMachine));
