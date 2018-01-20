@@ -1,3 +1,13 @@
+**NOTE:** All credit for this code belongs to the developers of https://github.com/devongovett/fontkit
+# Purpose of this Fork
+This fork was created for use in https://github.com/Hopding/pdf-lib.
+
+The original repository serialized and loaded the trie data using a binary file. This worked fine in Node, because `fs.readFileSync` was being called to load the serialized data into a `Buffer` object. In order to support use in the browser, Browserify and [`brfs`](https://github.com/browserify/brfs) were used to inline the binary data in the `index.js` file, and thereby remove the call to `fs.readFileSync`.
+
+This works fine if you are in a Node environment, or are using Browserify to bundle your code for use in the browser. But it doesn't work so well if you aren't doing either of those things. E.g. I was writing an app built with `create-react-app`, and the binary data was not being inlined for this dependency.
+
+I resolved this by simply serializing the trie data to a JSON file, which allows it to be loaded into the `index.js` file without using Browserify. Of course, this means that the trie data is not stored as efficiently, but that is not a concern for me.
+
 # fontkit
 
 Fontkit is an advanced font engine for Node and the browser, used by [PDFKit](https://github.com/devongovett/pdfkit). It supports many font formats, advanced glyph substitution and layout features, glyph path extraction, color emoji glyphs, font subsetting, and more.
