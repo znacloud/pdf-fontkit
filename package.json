@@ -17,8 +17,8 @@
     "coverage": "BABEL_ENV=cover nyc mocha"
   },
   "main": "index.js",
+  "jsnext:main": "src/index.js",
   "files": [
-    "index.js",
     "src",
     "base.js",
     "base.js.map",
