@@ -430,7 +430,7 @@ var LANGUAGES = [
 },
 
 // ISO (deprecated)
-[], { // windows
+[], { // windows                                        
   0x0436: 'af', 0x4009: 'en-IN', 0x0487: 'rw', 0x0432: 'tn',
   0x041C: 'sq', 0x1809: 'en-IE', 0x0441: 'sw', 0x045B: 'si',
   0x0484: 'gsw', 0x2009: 'en-JM', 0x0457: 'kok', 0x041B: 'sk',
