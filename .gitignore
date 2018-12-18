@@ -6,3 +6,8 @@ coverage.html
 *.js.map
 .nyc_output
 yarn-error.log
+fontkit.js
+fontkit.min.js
+trie.json
+trieIndic.json
+trieUse.json

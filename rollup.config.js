@@ -1,6 +1,10 @@
 import babel from 'rollup-plugin-babel';
 import localResolve from 'rollup-plugin-local-resolve';
 import json from 'rollup-plugin-json';
+import { uglify } from 'rollup-plugin-uglify';
+import { plugin as analyze } from 'rollup-plugin-analyzer';
+
+const { UGLIFY } = process.env;
 
 export default {
   input: 'src/index.js',
@@ -9,6 +13,7 @@ export default {
     format: 'umd',
   },
   plugins: [
+    // analyze(),
     localResolve(),
     json(),
     babel({
@@ -23,5 +28,6 @@ export default {
       ],
       runtimeHelpers: true
     }),
+    UGLIFY === 'true' && uglify(),
   ],
 };

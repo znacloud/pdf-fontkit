@@ -18,7 +18,7 @@
     "coverage": "cross-env BABEL_ENV=cover nyc mocha",
     "build-bundle": "browserify --insert-globals --standalone fontkit ./index.js | uglifyjs --mangle -c > bundle.js"
   },
-  "main": "bundle.js",
+  "main": "fonkit.js",
   "files": [
     "src",
     "base.js",
@@ -59,8 +59,10 @@
     "mocha": "^2.0.1",
     "nyc": "^10.3.2",
     "rollup": "^0.68.0",
+    "rollup-plugin-analyzer": "^2.1.0",
     "rollup-plugin-babel": "^4.1.0",
     "rollup-plugin-json": "^3.1.0",
-    "rollup-plugin-local-resolve": "^1.0.7"
+    "rollup-plugin-local-resolve": "^1.0.7",
+    "rollup-plugin-uglify": "^6.0.0"
   }
 }

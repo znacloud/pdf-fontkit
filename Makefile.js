@@ -10,7 +10,8 @@ target.all = () => {
   target.clean();
   target.generateTrieJson();
   target.moveTrieJsonToRoot();
-  target.rollupCjs();
+  target.rollupUMD();
+  target.rollupUMDMin();
 };
 
 target.generateTrieJson = () => {
@@ -26,11 +27,18 @@ target.moveTrieJsonToRoot = () => {
   mv('src/opentype/shapers/trieIndic.json', 'trieIndic.json');
 };
 
-target.rollupCjs = () => {
+target.rollupUMD = () => {
   target.moveTrieJsonToRoot();
-  exec('rollup -c rollup.config.js -o index.js');
+  env.UGLIFY = false;
+  exec('rollup -c rollup.config.js -o fontkit.js');
+};
+
+target.rollupUMDMin = () => {
+  target.moveTrieJsonToRoot();
+  env.UGLIFY = true;
+  exec('rollup -c rollup.config.js -o fontkit.min.js');
 };
 
 target.clean = () => {
-  rm('-f', 'index.js', 'trie.json', 'trieUse.json', 'trieIndic.json', )
+  rm('-f', 'fonkit.js', 'fontkit.min.js', 'trie.json', 'trieUse.json', 'trieIndic.json');
 };
