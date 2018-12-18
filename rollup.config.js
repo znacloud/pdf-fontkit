@@ -3,15 +3,24 @@ import localResolve from 'rollup-plugin-local-resolve';
 import json from 'rollup-plugin-json';
 
 export default {
-  format: 'cjs',
+  input: 'src/index.js',
+  output: {
+    name: 'fontkit',
+    format: 'umd',
+  },
   plugins: [
     localResolve(),
     json(),
     babel({
       babelrc: false,
-      presets: [['es2015', { modules: false, loose: true }]],
-      plugins: ['transform-decorators-legacy', 'transform-class-properties', 'transform-runtime'],
+      presets: [
+        ['@babel/preset-env', { modules: false, loose: true }]
+      ],
+      plugins: [
+        ['@babel/plugin-proposal-decorators', { legacy: true }],
+        ['@babel/plugin-proposal-class-properties']
+      ],
       runtimeHelpers: true
-    })
-  ]
+    }),
+  ],
 };
