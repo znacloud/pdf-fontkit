@@ -30,12 +30,16 @@ target.moveTrieJsonToRoot = () => {
     'src/opentype/shapers/trie.json',
     'src/opentype/shapers/trieUse.json',
     'src/opentype/shapers/trieIndic.json',
+    'src/opentype/shapers/indic.json',
+    'src/opentype/shapers/use.json',
     'es/opentype/shapers/'
   );
   cp(
     'src/opentype/shapers/trie.json',
     'src/opentype/shapers/trieUse.json',
     'src/opentype/shapers/trieIndic.json',
+    'src/opentype/shapers/indic.json',
+    'src/opentype/shapers/use.json',
     'lib/opentype/shapers/'
   );
 };
@@ -69,5 +73,7 @@ target.clean = () => {
     'src/opentype/shapers/trie.json',
     'src/opentype/shapers/trieUse.json',
     'src/opentype/shapers/trieIndic.json',
+    'src/opentype/shapers/indic.json',
+    'src/opentype/shapers/use.json',
   );
 };

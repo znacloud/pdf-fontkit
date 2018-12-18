@@ -9,6 +9,8 @@ yarn-error.log
 dist/
 es/
 lib/
-trie.json
-trieIndic.json
-trieUse.json
+/**/trie.json
+/**/trieIndic.json
+/**/trieUse.json
+/**/indic.json
+/**/use.json
