@@ -26,15 +26,18 @@
     "base64-arraybuffer": "^0.1.5",
     "brotli": "git+https://github.com/Hopding/brotli.js.git#cd0984d7debbfc3e68a1330cbbdce43f89562d3a",
     "browserify-optional": "^1.0.0",
+    "buffer": "^5.2.1",
     "clone": "^1.0.1",
     "deep-equal": "^1.0.0",
     "dfa": "^1.0.0",
     "pako": "^1.0.6",
     "restructure": "^0.5.3",
     "shelljs": "^0.8.3",
+    "stream": "^0.0.2",
     "tiny-inflate": "^1.0.2",
     "unicode-properties": "git+https://github.com/Hopding/unicode-properties.git#d97bf46ebdcef78f838f0803ec3643e608410add",
-    "unicode-trie": "^0.3.0"
+    "unicode-trie": "^0.3.0",
+    "util": "^0.11.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.2.0",

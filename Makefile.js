@@ -11,8 +11,8 @@ target.all = () => {
   target.generateTrieJson();
   target.moveTrieJsonToRoot();
   target.compileBabel();
-  // target.rollupUMD();
-  // target.rollupUMDMin();
+  target.rollupUMD();
+  target.rollupUMDMin();
 };
 
 target.generateTrieJson = () => {
