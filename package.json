@@ -2,6 +2,18 @@
   "name": "fontkit",
   "version": "1.7.7",
   "description": "An advanced font engine for Node and the browser",
+  "main": "lib/index.js",
+  "unpkg": "dist/fontkit.min.js",
+  "module": "es/index.js",
+  "scripts": {
+    "make": "node Makefile.js",
+    "clean": "node Makefile.js clean",
+    "test": "mocha",
+    "coverage": "cross-env BABEL_ENV=cover nyc mocha",
+    "build-bundle": "browserify --insert-globals --standalone fontkit ./index.js | uglifyjs --mangle -c > bundle.js"
+  },
+  "author": "Devon Govett <devongovett@gmail.com>",
+  "license": "MIT",
   "keywords": [
     "opentype",
     "font",
@@ -11,26 +23,6 @@
     "glyph",
     "layout"
   ],
-  "scripts": {
-    "make": "node Makefile.js",
-    "clean": "node Makefile.js clean",
-    "test": "mocha",
-    "coverage": "cross-env BABEL_ENV=cover nyc mocha",
-    "build-bundle": "browserify --insert-globals --standalone fontkit ./index.js | uglifyjs --mangle -c > bundle.js"
-  },
-  "main": "fontkit.js",
-  "files": [
-    "src",
-    "base.js",
-    "base.js.map",
-    "index.js",
-    "index.js.map",
-    "data.trie",
-    "use.trie",
-    "indic.trie"
-  ],
-  "author": "Devon Govett <devongovett@gmail.com>",
-  "license": "MIT",
   "dependencies": {
     "brotli": "^1.2.0",
     "browserify-optional": "^1.0.0",
@@ -61,8 +53,10 @@
     "rollup": "^0.68.0",
     "rollup-plugin-analyzer": "^2.1.0",
     "rollup-plugin-babel": "^4.1.0",
+    "rollup-plugin-commonjs": "^9.2.0",
     "rollup-plugin-json": "^3.1.0",
     "rollup-plugin-local-resolve": "^1.0.7",
+    "rollup-plugin-node-resolve": "^4.0.0",
     "rollup-plugin-uglify": "^6.0.0"
   }
 }
