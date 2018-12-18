@@ -1,18 +1,21 @@
 import DefaultShaper from './DefaultShaper';
 import StateMachine from 'dfa';
 import UnicodeTrie from 'unicode-trie';
+import pako from 'pako';
+import * as base64 from 'base64-arraybuffer';
 import GlyphInfo from '../GlyphInfo';
-import useData from './use.json';
 
-const {categories, decompositions} = useData;
+import base64DeflatedUseData from './use.json';
+import base64DeflatedTrie from './trieUse.json';
 
 // Trie is serialized as a Buffer in node, but here
 // we may be running in a browser so we make an Uint8Array
-import trieBuffer from './trieUse.json';
-// const trieBuffer = require('./trieUse.json');
-const trieData = new Uint8Array(trieBuffer.data);
+const useData = JSON.parse(String.fromCharCode(...pako.inflate(base64.decode(base64DeflatedUseData))));
+const trieData = pako.inflate(base64.decode(base64DeflatedTrie));
+
+const {categories, decompositions} = useData;
+
 const trie = new UnicodeTrie(trieData);
-// const trie = new UnicodeTrie(require('fs').readFileSync(__dirname + '/use.trie'));
 const stateMachine = new StateMachine(useData);
 
 /**

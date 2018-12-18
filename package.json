@@ -9,8 +9,7 @@
     "make": "node Makefile.js",
     "clean": "node Makefile.js clean",
     "test": "mocha",
-    "coverage": "cross-env BABEL_ENV=cover nyc mocha",
-    "build-bundle": "browserify --insert-globals --standalone fontkit ./index.js | uglifyjs --mangle -c > bundle.js"
+    "coverage": "cross-env BABEL_ENV=cover nyc mocha"
   },
   "author": "Devon Govett <devongovett@gmail.com>",
   "license": "MIT",
@@ -24,11 +23,13 @@
     "layout"
   ],
   "dependencies": {
+    "base64-arraybuffer": "^0.1.5",
     "brotli": "git+https://github.com/Hopding/brotli.js.git#cd0984d7debbfc3e68a1330cbbdce43f89562d3a",
     "browserify-optional": "^1.0.0",
     "clone": "^1.0.1",
     "deep-equal": "^1.0.0",
     "dfa": "^1.0.0",
+    "pako": "^1.0.6",
     "restructure": "^0.5.3",
     "shelljs": "^0.8.3",
     "tiny-inflate": "^1.0.2",

@@ -2,10 +2,10 @@ import DefaultShaper from './DefaultShaper';
 import StateMachine from 'dfa';
 import UnicodeTrie from 'unicode-trie';
 import unicode from 'unicode-properties';
+import pako from 'pako';
+import * as base64 from 'base64-arraybuffer';
 import * as Script from '../../layout/Script';
 import GlyphInfo from '../GlyphInfo';
-import indicMachine from './indic.json';
-import useData from './use.json';
 import {
   CATEGORIES,
   POSITIONS,
@@ -15,15 +15,19 @@ import {
   INDIC_DECOMPOSITIONS
 } from './indic-data';
 
-const {decompositions} = useData;
+import base64DeflatedIndicMachine from './indic.json';
+import base64DeflatedUseData from './use.json';
+import base64DeflatedTrie from './trieIndic.json';
 
 // Trie is serialized as a Buffer in node, but here
 // we may be running in a browser so we make an Uint8Array
-import trieBuffer from './trieIndic.json';
-// const trieBuffer = require('./trieIndic.json');
-const trieData = new Uint8Array(trieBuffer.data);
+const indicMachine = JSON.parse(String.fromCharCode(...pako.inflate(base64.decode(base64DeflatedIndicMachine))));
+const useData = JSON.parse(String.fromCharCode(...pako.inflate(base64.decode(base64DeflatedUseData))));
+const trieData = pako.inflate(base64.decode(base64DeflatedTrie));
+
+const {decompositions} = useData;
+
 const trie = new UnicodeTrie(trieData);
-// const trie = new UnicodeTrie(require('fs').readFileSync(__dirname + '/indic.trie'));
 const stateMachine = new StateMachine(indicMachine);
 
 /**

@@ -1,14 +1,15 @@
 import DefaultShaper from './DefaultShaper';
 import unicode from 'unicode-properties';
 import UnicodeTrie from 'unicode-trie';
+import pako from 'pako';
+import * as base64 from 'base64-arraybuffer';
 
 // Trie is serialized as a Buffer in node, but here
 // we may be running in a browser so we make an Uint8Array
-// const trieBuffer = require('./trie.json');
-import trieBuffer from './trie.json';
-const trieData = new Uint8Array(trieBuffer.data);
+import base64DeflatedTrie from './trie.json';
+const trieData = pako.inflate(base64.decode(base64DeflatedTrie));
 const trie = new UnicodeTrie(trieData);
-// const trie = new UnicodeTrie(require('fs').readFileSync(__dirname + '/data.trie'));
+
 const FEATURES = ['isol', 'fina', 'fin2', 'fin3', 'medi', 'med2', 'init'];
 
 const ShapingClasses = {

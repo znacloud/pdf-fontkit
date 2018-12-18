@@ -2,6 +2,8 @@ import codepoints from 'codepoints';
 import fs from 'fs';
 import UnicodeTrieBuilder from 'unicode-trie/builder';
 import compile from 'dfa/compile';
+import pako from 'pako';
+import * as base64 from 'base64-arraybuffer';
 
 const CATEGORIES = {
   B: [
@@ -276,8 +278,9 @@ function decompose(code) {
 
 // Trie is serialized suboptimally as JSON so it can be loaded via require,
 // allowing unicode-properties to work in the browser
-fs.writeFileSync(__dirname + '/trieUse.json', JSON.stringify(trie.toBuffer()));
-// fs.writeFileSync(__dirname + '/use.trie', trie.toBuffer());
+const trieFilePath = __dirname + '/trieUse.json'
+const jsonBase64DeflatedTrie = JSON.stringify(base64.encode(pako.deflate(trie.toBuffer())));
+fs.writeFileSync(trieFilePath, jsonBase64DeflatedTrie);
 
 let stateMachine = compile(fs.readFileSync(__dirname + '/use.machine', 'utf8'), symbols);
 let json = Object.assign({
@@ -285,4 +288,7 @@ let json = Object.assign({
   decompositions: decompositions
 }, stateMachine);
 
-fs.writeFileSync(__dirname + '/use.json', JSON.stringify(json));
+const useFilePath = __dirname + '/use.json';
+const useJsonBytes = JSON.stringify(json).split('').map(c => c.charCodeAt(0));
+const jsonBase64DeflatedUse = JSON.stringify(base64.encode(pako.deflate(useJsonBytes)));
+fs.writeFileSync(useFilePath, jsonBase64DeflatedUse);
