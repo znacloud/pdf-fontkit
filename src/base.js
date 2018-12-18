@@ -1,16 +1,45 @@
 import r from 'restructure';
-// const fs = require('fs');
 
-var fontkit = {};
-export default fontkit;
+const formats = [];
 
-fontkit.logErrors = false;
+const fontkit = {
+  logErrors: false,
 
-let formats = [];
-fontkit.registerFormat = function(format) {
-  formats.push(format);
+  registerFormat: (format) => {
+    formats.push(format);
+  },
+
+  create: (buffer, postscriptName) => {
+    for (let i = 0; i < formats.length; i++) {
+      const format = formats[i];
+      if (format.probe(buffer)) {
+        const font = new format(new r.DecodeStream(buffer));
+        if (postscriptName) {
+          return font.getFont(postscriptName);
+        }
+        return font;
+      }
+    }
+    throw new Error('Unknown font format');
+  },
 };
 
+export default fontkit;
+
+
+// import r from 'restructure';
+// const fs = require('fs');
+//
+// var fontkit = {};
+// export default fontkit;
+//
+// fontkit.logErrors = false;
+//
+// let formats = [];
+// fontkit.registerFormat = function(format) {
+  // formats.push(format);
+// };
+//
 // fontkit.openSync = function(filename, postscriptName) {
 //   let buffer = fs.readFileSync(filename);
 //   return fontkit.create(buffer, postscriptName);
@@ -36,19 +65,20 @@ fontkit.registerFormat = function(format) {
 //
 //   return;
 // };
-
-fontkit.create = function(buffer, postscriptName) {
-  for (let i = 0; i < formats.length; i++) {
-    let format = formats[i];
-    if (format.probe(buffer)) {
-      let font = new format(new r.DecodeStream(buffer));
-      if (postscriptName) {
-        return font.getFont(postscriptName);
-      }
-
-      return font;
-    }
-  }
-
-  throw new Error('Unknown font format');
-};
+//
+// fontkit.create = function(buffer, postscriptName) {
+  // for (let i = 0; i < formats.length; i++) {
+    // let format = formats[i];
+    // if (format.probe(buffer)) {
+      // let font = new format(new r.DecodeStream(buffer));
+      // if (postscriptName) {
+        // return font.getFont(postscriptName);
+      // }
+//
+      // return font;
+    // }
+  // }
+//
+  // throw new Error('Unknown font format');
+// };
+//
