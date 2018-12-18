@@ -33,7 +33,7 @@
     "restructure": "^0.5.3",
     "shelljs": "^0.8.3",
     "tiny-inflate": "^1.0.2",
-    "unicode-properties": "git+https://github.com/Hopding/unicode-properties.git#80cf205b2785f00d54be579d6deba2121669e8c8",
+    "unicode-properties": "git+https://github.com/Hopding/unicode-properties.git#d97bf46ebdcef78f838f0803ec3643e608410add",
     "unicode-trie": "^0.3.0"
   },
   "devDependencies": {
