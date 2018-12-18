@@ -7,9 +7,9 @@ config.fatal = true;
 config.verbose = true;
 
 target.all = () => {
-  // target.clean();
-  // target.generateTrieJson();
-  // target.moveTrieJsonToRoot();
+  target.clean();
+  target.generateTrieJson();
+  target.moveTrieJsonToRoot();
   target.rollupCjs();
 };
 
@@ -27,7 +27,7 @@ target.moveTrieJsonToRoot = () => {
 };
 
 target.rollupCjs = () => {
-  // target.moveTrieJsonToRoot();
+  target.moveTrieJsonToRoot();
   exec('rollup -c rollup.config.js -o index.js');
 };
 

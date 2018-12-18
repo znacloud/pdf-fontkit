@@ -1,6 +1,9 @@
 {
-  "presets": ["env"],
-  "plugins": ["transform-decorators-legacy", "transform-class-properties", "transform-runtime"],
+  "presets": ["@babel/preset-env"],
+  "plugins": [
+    ["@babel/plugin-proposal-decorators", { "legacy": true }],
+    ["@babel/plugin-proposal-class-properties"]
+  ],
   "env": {
     "cover": {
       "plugins": ["istanbul"]
