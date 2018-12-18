@@ -24,7 +24,7 @@
     "layout"
   ],
   "dependencies": {
-    "brotli": "^1.2.0",
+    "brotli": "git+https://github.com/Hopding/brotli.js.git#cd0984d7debbfc3e68a1330cbbdce43f89562d3a",
     "browserify-optional": "^1.0.0",
     "clone": "^1.0.1",
     "deep-equal": "^1.0.0",
