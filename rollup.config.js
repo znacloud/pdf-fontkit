@@ -12,6 +12,7 @@ export default {
     localResolve(),
     json(),
     babel({
+      // TODO: Use external .babelrc file?
       babelrc: false,
       presets: [
         ['@babel/preset-env', { modules: false, loose: true }]
