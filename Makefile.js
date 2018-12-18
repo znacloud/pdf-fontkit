@@ -22,9 +22,9 @@ target.generateTrieJson = () => {
 
 target.moveTrieJsonToRoot = () => {
   target.generateTrieJson();
-  mv('src/opentype/shapers/trie.json', 'trie.json');
-  mv('src/opentype/shapers/trieUse.json', 'trieUse.json');
-  mv('src/opentype/shapers/trieIndic.json', 'trieIndic.json');
+  // mv('src/opentype/shapers/trie.json', 'trie.json');
+  // mv('src/opentype/shapers/trieUse.json', 'trieUse.json');
+  // mv('src/opentype/shapers/trieIndic.json', 'trieIndic.json');
 };
 
 target.rollupUMD = () => {

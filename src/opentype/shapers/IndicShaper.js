@@ -19,7 +19,8 @@ const {decompositions} = useData;
 
 // Trie is serialized as a Buffer in node, but here
 // we may be running in a browser so we make an Uint8Array
-const trieBuffer = require('./trieIndic.json');
+import trieBuffer from './trieIndic.json';
+// const trieBuffer = require('./trieIndic.json');
 const trieData = new Uint8Array(trieBuffer.data);
 const trie = new UnicodeTrie(trieData);
 // const trie = new UnicodeTrie(require('fs').readFileSync(__dirname + '/indic.trie'));

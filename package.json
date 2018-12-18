@@ -18,7 +18,7 @@
     "coverage": "cross-env BABEL_ENV=cover nyc mocha",
     "build-bundle": "browserify --insert-globals --standalone fontkit ./index.js | uglifyjs --mangle -c > bundle.js"
   },
-  "main": "fonkit.js",
+  "main": "fontkit.js",
   "files": [
     "src",
     "base.js",
