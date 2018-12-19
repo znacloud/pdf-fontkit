@@ -6,18 +6,6 @@ require('shelljs/make');
 config.fatal = true;
 config.verbose = true;
 
-target.deps = () => {
-  cd('node_modules/unicode-properties');
-  exec('yarn');
-  exec('yarn make');
-  exec('rm -rf node_modules');
-  cd('../restructure');
-  exec('yarn');
-  exec('yarn prepublish');
-  exec('rm -rf node_modules');
-  cd('../..');
-}
-
 target.all = () => {
   target.clean();
   target.generateTrieJson();
