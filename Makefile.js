@@ -22,9 +22,9 @@ target.all = () => {
   target.clean();
   target.generateTrieJson();
   target.rollupESM();
-  // target.rollupESMMin();
-  // target.rollupUMD();
-  // target.rollupUMDMin();
+  target.rollupESMMin();
+  target.rollupUMD();
+  target.rollupUMDMin();
 };
 
 target.generateTrieJson = () => {
