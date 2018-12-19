@@ -2,7 +2,7 @@
   "name": "fontkit",
   "version": "1.7.7",
   "description": "An advanced font engine for Node and the browser",
-  "main": "lib/index.js",
+  "main": "dist/fontkit.js",
   "unpkg": "dist/fontkit.min.js",
   "module": "es/index.js",
   "scripts": {
@@ -24,22 +24,17 @@
   ],
   "dependencies": {
     "base64-arraybuffer": "^0.1.5",
-    "brotli": "git+https://github.com/Hopding/brotli.js.git#cd0984d7debbfc3e68a1330cbbdce43f89562d3a",
+    "brotli": "git+https://github.com/Hopding/brotli.js.git#0350970de946950ce47c1948913827931d88fc11",
     "browserify-optional": "^1.0.0",
-    "buffer": "^5.2.1",
     "clone": "^1.0.1",
     "deep-equal": "^1.0.0",
     "dfa": "^1.0.0",
-    "events": "^3.0.0",
     "pako": "^1.0.6",
-    "process": "^0.11.10",
     "restructure": "^0.5.3",
     "shelljs": "^0.8.3",
-    "stream": "npm:readable-stream",
     "tiny-inflate": "^1.0.2",
     "unicode-properties": "git+https://github.com/Hopding/unicode-properties.git#d97bf46ebdcef78f838f0803ec3643e608410add",
-    "unicode-trie": "^0.3.0",
-    "util": "^0.11.1"
+    "unicode-trie": "^0.3.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.2.0",
@@ -62,6 +57,8 @@
     "rollup-plugin-commonjs": "^9.2.0",
     "rollup-plugin-json": "^3.1.0",
     "rollup-plugin-local-resolve": "^1.0.7",
+    "rollup-plugin-node-builtins": "^2.1.2",
+    "rollup-plugin-node-globals": "^1.4.0",
     "rollup-plugin-node-resolve": "^4.0.0",
     "rollup-plugin-uglify": "^6.0.0"
   }

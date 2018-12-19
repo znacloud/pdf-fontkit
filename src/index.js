@@ -1,3 +1,11 @@
+// import './shims/process';
+// import 'stream';
+
+// exports.decompress = require('./dec/decode').BrotliDecompressBuffer;
+
+// import 'brotli/dec/decode';
+
+
 import fontkit from './base';
 import TTFFont from './TTFFont';
 import WOFFFont from './WOFFFont';

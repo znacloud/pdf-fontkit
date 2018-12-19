@@ -1,5 +1,7 @@
 import babel from 'rollup-plugin-babel';
 import nodeResolve from 'rollup-plugin-node-resolve';
+import builtins from 'rollup-plugin-node-builtins';
+import globals from 'rollup-plugin-node-globals';
 import commonjs from 'rollup-plugin-commonjs';
 import json from 'rollup-plugin-json';
 import { uglify } from 'rollup-plugin-uglify';
@@ -18,6 +20,7 @@ export default {
     nodeResolve({
       jsnext: true,
       preferBuiltins: false,
+      // browser: true,
     }),
     commonjs({
       exclude: 'src/**',
@@ -37,6 +40,8 @@ export default {
       ],
       runtimeHelpers: true
     }),
+    globals(),
+    builtins(),
     UGLIFY === 'true' && uglify(),
   ],
 };
