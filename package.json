@@ -5,7 +5,7 @@
   "main": "dist/fontkit.umd.js",
   "unpkg": "dist/fontkit.umd.min.js",
   "module": "dist/fontkit.es.js",
-  "types": "lib/index.d.ts",
+  "types": "fontkit.d.ts",
   "scripts": {
     "make": "node Makefile.js",
     "clean": "node Makefile.js clean",
