@@ -9,8 +9,8 @@ config.verbose = true;
 target.all = () => {
   target.clean();
   target.generateTrieJson();
-  target.moveTrieJsonToRoot();
-  target.compileBabel();
+  target.rollupESM();
+  target.rollupESMMin();
   target.rollupUMD();
   target.rollupUMDMin();
 };
@@ -22,53 +22,37 @@ target.generateTrieJson = () => {
   exec('babel-node src/opentype/shapers/gen-indic.js');
 };
 
-target.moveTrieJsonToRoot = () => {
+target.rollupESM = () => {
   target.generateTrieJson();
-  mkdir('-p', 'es/opentype/shapers/')
-  mkdir('-p', 'lib/opentype/shapers/')
-  cp(
-    'src/opentype/shapers/trie.json',
-    'src/opentype/shapers/trieUse.json',
-    'src/opentype/shapers/trieIndic.json',
-    'src/opentype/shapers/indic.json',
-    'src/opentype/shapers/use.json',
-    'es/opentype/shapers/'
-  );
-  cp(
-    'src/opentype/shapers/trie.json',
-    'src/opentype/shapers/trieUse.json',
-    'src/opentype/shapers/trieIndic.json',
-    'src/opentype/shapers/indic.json',
-    'src/opentype/shapers/use.json',
-    'lib/opentype/shapers/'
-  );
+  env.UGLIFY = false;
+  env.MODULE_TYPE = 'esm';
+  exec('rollup -c rollup.config.js -o dist/fontkit.es.js');
 };
 
-target.compileBabel = () => {
-  target.moveTrieJsonToRoot();
-  env.MODULE_TYPE = 'es6';
-  exec(`babel --out-dir es src/`);
-  env.MODULE_TYPE = 'commonjs';
-  exec(`babel --out-dir lib src/`);
-}
+target.rollupESMMin = () => {
+  target.generateTrieJson();
+  env.UGLIFY = true;
+  env.MODULE_TYPE = 'esm';
+  exec('rollup -c rollup.config.js -o dist/fontkit.es.min.js');
+};
 
 target.rollupUMD = () => {
-  target.moveTrieJsonToRoot();
+  target.generateTrieJson();
   env.UGLIFY = false;
-  exec('rollup -c rollup.config.js -o dist/fontkit.js');
+  env.MODULE_TYPE = 'umd';
+  exec('rollup -c rollup.config.js -o dist/fontkit.umd.js');
 };
 
 target.rollupUMDMin = () => {
-  target.moveTrieJsonToRoot();
+  target.generateTrieJson();
   env.UGLIFY = true;
-  exec('rollup -c rollup.config.js -o dist/fontkit.min.js');
+  env.MODULE_TYPE = 'umd';
+  exec('rollup -c rollup.config.js -o dist/fontkit.umd.min.js');
 };
 
 target.clean = () => {
   rm(
     '-rf',
-    'lib',
-    'es',
     'dist',
     'src/opentype/shapers/trie.json',
     'src/opentype/shapers/trieUse.json',

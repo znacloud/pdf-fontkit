@@ -1,26 +1,33 @@
 import babel from 'rollup-plugin-babel';
 import nodeResolve from 'rollup-plugin-node-resolve';
-import builtins from 'rollup-plugin-node-builtins';
-import globals from 'rollup-plugin-node-globals';
+import nodeBuiltins from 'rollup-plugin-node-builtins';
+import nodeGlobals from 'rollup-plugin-node-globals';
 import commonjs from 'rollup-plugin-commonjs';
 import json from 'rollup-plugin-json';
-import { uglify } from 'rollup-plugin-uglify';
+import { terser } from 'rollup-plugin-terser';
 import { plugin as analyze } from 'rollup-plugin-analyzer';
+import visualizer from 'rollup-plugin-visualizer';
 
-const { UGLIFY } = process.env;
+const { UGLIFY, MODULE_TYPE } = process.env;
 
 export default {
   input: 'src/index.js',
   output: {
     name: 'fontkit',
-    format: 'umd',
+    format: MODULE_TYPE,
   },
+  external: MODULE_TYPE === 'esm'
+    ? ['pako'] // pdf-lib will provide pako for us
+    : [],
   plugins: [
     // analyze(),
+    // visualizer({
+    //   // sourcemap: true,
+    //   open: true,
+    // }),
     nodeResolve({
       jsnext: true,
       preferBuiltins: false,
-      // browser: true,
     }),
     commonjs({
       exclude: 'src/**',
@@ -32,7 +39,7 @@ export default {
     babel({
       babelrc: false,
       presets: [
-        ['@babel/preset-env', { loose: true }]
+        ['@babel/preset-env', { modules: false, loose: true }]
       ],
       plugins: [
         ['@babel/plugin-proposal-decorators', { legacy: true }],
@@ -40,8 +47,8 @@ export default {
       ],
       runtimeHelpers: true
     }),
-    globals(),
-    builtins(),
-    UGLIFY === 'true' && uglify(),
+    nodeGlobals(),
+    nodeBuiltins(),
+    UGLIFY === 'true' && terser(),
   ],
 };

@@ -3,10 +3,7 @@ import {getEncoding} from './encodings';
 import {cache} from './decorators';
 import {range} from './utils';
 
-// iconv-lite is an optional dependency.
-try {
-  var iconv = require('iconv-lite');
-} catch (err) {}
+import iconv from 'iconv-lite';
 
 export default class CmapProcessor {
   constructor(cmapTable) {

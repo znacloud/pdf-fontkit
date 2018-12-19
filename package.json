@@ -2,8 +2,10 @@
   "name": "fontkit",
   "version": "1.7.7",
   "description": "An advanced font engine for Node and the browser",
-  "main": "dist/fontkit.js",
-  "unpkg": "dist/fontkit.min.js",
+  "main": "dist/fontkit.umd.js",
+  "unpkg": "dist/fontkit.umd.min.js",
+  "module": "dist/fontkit.es.js",
+  "types": "lib/index.d.ts",
   "scripts": {
     "make": "node Makefile.js",
     "clean": "node Makefile.js clean",
@@ -22,20 +24,19 @@
     "layout"
   ],
   "dependencies": {
-  },
-  "devDependencies": {
     "base64-arraybuffer": "^0.1.5",
-    "brotli": "git+https://github.com/Hopding/brotli.js.git#0350970de946950ce47c1948913827931d88fc11",
-    "browserify-optional": "^1.0.0",
+    "brotli": "git+https://github.com/Hopding/brotli.js.git#2a623817f6bd8d1f7f528f69ac8ce8067b3383fb",
     "clone": "^1.0.1",
     "deep-equal": "^1.0.0",
     "dfa": "^1.0.0",
+    "iconv-lite": "^0.4.13",
     "pako": "^1.0.6",
     "restructure": "^0.5.3",
     "tiny-inflate": "^1.0.2",
-    "unicode-properties": "git+https://github.com/Hopding/unicode-properties.git#d97bf46ebdcef78f838f0803ec3643e608410add",
-    "unicode-trie": "^0.3.0",
-
+    "unicode-properties": "git+https://github.com/Hopding/unicode-properties.git#51a63d54730b78507206f07d19bd04186e5cffe7",
+    "unicode-trie": "^0.3.0"
+  },
+  "devDependencies": {
     "@babel/cli": "^7.2.0",
     "@babel/core": "^7.2.2",
     "@babel/node": "^7.2.2",
@@ -47,7 +48,6 @@
     "concat-stream": "^1.4.6",
     "esdoc": "^0.4.8",
     "esdoc-es7-plugin": "0.0.3",
-    "iconv-lite": "^0.4.13",
     "mocha": "^2.0.1",
     "nyc": "^10.3.2",
     "rollup": "^0.68.0",
@@ -55,11 +55,11 @@
     "rollup-plugin-babel": "^4.1.0",
     "rollup-plugin-commonjs": "^9.2.0",
     "rollup-plugin-json": "^3.1.0",
-    "rollup-plugin-local-resolve": "^1.0.7",
     "rollup-plugin-node-builtins": "^2.1.2",
     "rollup-plugin-node-globals": "^1.4.0",
     "rollup-plugin-node-resolve": "^4.0.0",
-    "rollup-plugin-uglify": "^6.0.0",
+    "rollup-plugin-terser": "^3.0.0",
+    "rollup-plugin-visualizer": "^0.9.2",
     "shelljs": "^0.8.3"
   }
 }
