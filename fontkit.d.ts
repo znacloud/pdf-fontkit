@@ -263,7 +263,7 @@ export interface Font {
   italicAngle: number; /** If this is an italic font, the angle the cursor should be drawn at to match the font design */
   capHeight: number; /** Height of capital letters above the baseline. */
   xHeight: number; /** Height of lower case letters. */
-  bbox: number; /** Font’s bounding box, i.e. the box that encloses all glyphs in the font */
+  bbox: BoundingBox; /** Font’s bounding box, i.e. the box that encloses all glyphs in the font */
 
   // Other properties
   numGlyphs: number; /** Number of glyphs in the font */
