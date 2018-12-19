@@ -1,4 +1,4 @@
-import r from 'restructure';
+import r from '@pdf-lib/restructure';
 import { UnboundedArray, LookupTable, StateTable } from './aat';
 
 let LigatureData = {

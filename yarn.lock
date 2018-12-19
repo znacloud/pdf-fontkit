@@ -667,6 +667,29 @@
     lodash "^4.17.10"
     to-fast-properties "^2.0.0"
 
+"@pdf-lib/brotli@^0.0.0":
+  version "0.0.0"
+  resolved "https://registry.yarnpkg.com/@pdf-lib/brotli/-/brotli-0.0.0.tgz#18a5309649d4574dab97fa65c5b49cf50ed8ddb8"
+  integrity sha512-hUQg09XRVvWglv395r36psY6ysNDOfIRTgVMfsA0/ZXwCk/b0bxjQj/QfpwPWQ/NUkQiiyEDTBoS5Rm0amUbhQ==
+  dependencies:
+    base64-js "^1.1.2"
+
+"@pdf-lib/restructure@^0.0.0":
+  version "0.0.0"
+  resolved "https://registry.yarnpkg.com/@pdf-lib/restructure/-/restructure-0.0.0.tgz#28b66c7590b6b18f13ff118e56674fa691208a2d"
+  integrity sha512-dTv36a6hc96WUhDPdMFu2z6mF11hbM1Iv8k6nuRUwU1l7gtI2CiSnpPCnOXGKAz6KSbv3q1yiC48y1HH7kuaEw==
+  dependencies:
+    browserify-optional "^1.0.0"
+
+"@pdf-lib/unicode-properties@^0.0.0":
+  version "0.0.0"
+  resolved "https://registry.yarnpkg.com/@pdf-lib/unicode-properties/-/unicode-properties-0.0.0.tgz#ca11ca6c046c08b7fd61ef82bc22f65e1d515cfc"
+  integrity sha512-FuISPyVk0SSDExBQv/Jd6UwiVJA6qMXt1LwdLGu+bKdMIaPZhZAs0ZuHa4DPL4h4a+IvVyCDtxKU3veDtdgfKQ==
+  dependencies:
+    base64-arraybuffer "^0.1.5"
+    pako "^1.0.6"
+    unicode-trie "^0.3.0"
+
 "@types/estree@0.0.39":
   version "0.0.39"
   resolved "https://registry.yarnpkg.com/@types/estree/-/estree-0.0.39.tgz#e177e699ee1b8c22d23174caaa7422644389509f"
@@ -830,6 +853,7 @@ assign-symbols@^1.0.0:
 ast-transform@0.0.0:
   version "0.0.0"
   resolved "https://registry.yarnpkg.com/ast-transform/-/ast-transform-0.0.0.tgz#74944058887d8283e189d954600947bc98fe0062"
+  integrity sha1-dJRAWIh9goPhidlUYAlHvJj+AGI=
   dependencies:
     escodegen "~1.2.0"
     esprima "~1.0.4"
@@ -838,6 +862,7 @@ ast-transform@0.0.0:
 ast-types@^0.7.0:
   version "0.7.8"
   resolved "https://registry.yarnpkg.com/ast-types/-/ast-types-0.7.8.tgz#902d2e0d60d071bdcd46dc115e1809ed11c138a9"
+  integrity sha1-kC0uDWDQcb3NRtwRXhgJ7RHBOKk=
 
 async-each@^1.0.0:
   version "1.0.1"
@@ -963,6 +988,7 @@ base64-arraybuffer@^0.1.5:
 base64-js@^1.1.2:
   version "1.3.0"
   resolved "https://registry.yarnpkg.com/base64-js/-/base64-js-1.3.0.tgz#cab1e6118f051095e58b5281aea8c1cd22bfc0e3"
+  integrity sha512-ccav/yGvoa80BQDljCxsmmQ3Xvx60/UpBIij5QN21W3wBi/hhIC9OoO+KLpu9IJTS9j4DRVJ3aDDF9cMSoa2lw==
 
 base@^0.11.1:
   version "0.11.2"
@@ -1037,15 +1063,10 @@ brorand@^1.0.1:
   resolved "https://registry.yarnpkg.com/brorand/-/brorand-1.1.0.tgz#12c25efe40a45e3c323eb8675a0a0ce57b22371f"
   integrity sha1-EsJe/kCkXjwyPrhnWgoM5XsiNx8=
 
-"brotli@git+https://github.com/Hopding/brotli.js.git#2a623817f6bd8d1f7f528f69ac8ce8067b3383fb":
-  version "1.3.2"
-  resolved "git+https://github.com/Hopding/brotli.js.git#2a623817f6bd8d1f7f528f69ac8ce8067b3383fb"
-  dependencies:
-    base64-js "^1.1.2"
-
 browser-resolve@^1.8.1:
-  version "1.11.2"
-  resolved "https://registry.yarnpkg.com/browser-resolve/-/browser-resolve-1.11.2.tgz#8ff09b0a2c421718a1051c260b32e48f442938ce"
+  version "1.11.3"
+  resolved "https://registry.yarnpkg.com/browser-resolve/-/browser-resolve-1.11.3.tgz#9b7cbb3d0f510e4cb86bdbd796124d28b5890af6"
+  integrity sha512-exDi1BYWB/6raKHmDTCicQfTkqwN5fioMFV4j8BsfMU4R2DK/QfZfK7kOVkmWCNANf0snkBzqGqAJBao9gZMdQ==
   dependencies:
     resolve "1.1.7"
 
@@ -1092,6 +1113,7 @@ browserify-fs@^1.0.0:
 browserify-optional@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/browserify-optional/-/browserify-optional-1.0.1.tgz#1e13722cfde0d85f121676c2a72ced533a018869"
+  integrity sha1-HhNyLP3g2F8SFnbCpyztUzoBiGk=
   dependencies:
     ast-transform "0.0.0"
     ast-types "^0.7.0"
@@ -1733,6 +1755,7 @@ escodegen@^1.6.1:
 escodegen@~1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/escodegen/-/escodegen-1.2.0.tgz#09de7967791cc958b7f89a2ddb6d23451af327e1"
+  integrity sha1-Cd55Z3kcyVi3+Jot220jRRrzJ+E=
   dependencies:
     esprima "~1.0.4"
     estraverse "~1.5.0"
@@ -1780,6 +1803,7 @@ esprima@^3.1.3:
 esprima@~1.0.4:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/esprima/-/esprima-1.0.4.tgz#9f557e08fc3b4d26ece9dd34f8fbf476b62585ad"
+  integrity sha1-n1V+CPw7TSbs6d00+Pv0drYlha0=
 
 estraverse@4.1.0:
   version "4.1.0"
@@ -1796,6 +1820,7 @@ estraverse@^4.2.0:
 estraverse@~1.5.0:
   version "1.5.1"
   resolved "https://registry.yarnpkg.com/estraverse/-/estraverse-1.5.1.tgz#867a3e8e58a9f84618afb6c2ddbcd916b7cbaf71"
+  integrity sha1-hno+jlip+EYYr7bC3bzZFrfLr3E=
 
 estree-walker@^0.5.2:
   version "0.5.2"
@@ -1808,6 +1833,7 @@ esutils@^2.0.2:
 esutils@~1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/esutils/-/esutils-1.0.0.tgz#8151d358e20c8acc7fb745e7472c0025fe496570"
+  integrity sha1-gVHTWOIMisx/t0XnRywAJf5JZXA=
 
 evp_bytestokey@^1.0.0, evp_bytestokey@^1.0.3:
   version "1.0.3"
@@ -3817,6 +3843,7 @@ resolve-url@^0.2.1:
 resolve@1.1.7:
   version "1.1.7"
   resolved "https://registry.yarnpkg.com/resolve/-/resolve-1.1.7.tgz#203114d82ad2c5ed9e8e0411b3932875e889e97b"
+  integrity sha1-IDEU2CrSxe2ejgQRs5ModeiJ6Xs=
 
 resolve@^1.1.6, resolve@^1.3.2, resolve@^1.8.1:
   version "1.9.0"
@@ -3824,12 +3851,6 @@ resolve@^1.1.6, resolve@^1.3.2, resolve@^1.8.1:
   integrity sha512-TZNye00tI67lwYvzxCxHGjwTNlUV70io54/Ed4j6PscB8xVfuBJpRenI/o6dVk0cY0PYTY27AgCoGGxRnYuItQ==
   dependencies:
     path-parse "^1.0.6"
-
-"restructure@git+https://github.com/Hopding/restructure.git#6f9fd535c3914685a55002ef9b48e08a684b9bec":
-  version "0.5.4"
-  resolved "git+https://github.com/Hopding/restructure.git#6f9fd535c3914685a55002ef9b48e08a684b9bec"
-  dependencies:
-    browserify-optional "^1.0.0"
 
 ret@~0.1.10:
   version "0.1.15"
@@ -4124,6 +4145,7 @@ source-map@^0.7.3:
 source-map@~0.1.30:
   version "0.1.43"
   resolved "https://registry.yarnpkg.com/source-map/-/source-map-0.1.43.tgz#c24bc146ca517c1471f5dacbe2571b2b7f9e3346"
+  integrity sha1-wkvBRspRfBRx9drL4lcbK3+eM0Y=
   dependencies:
     amdefine ">=0.0.4"
 
@@ -4314,6 +4336,7 @@ test-exclude@^4.1.0, test-exclude@^4.2.1:
 through@~2.3.4:
   version "2.3.8"
   resolved "https://registry.yarnpkg.com/through/-/through-2.3.8.tgz#0dd4c9ffaabc357960b1b724115d7e0e86a2e1f5"
+  integrity sha1-DdTJ/6q8NXlgsbckEV1+Doai4fU=
 
 tiny-inflate@^1.0.0, tiny-inflate@^1.0.2:
   version "1.0.2"
@@ -4435,14 +4458,6 @@ unicode-match-property-value-ecmascript@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/unicode-match-property-value-ecmascript/-/unicode-match-property-value-ecmascript-1.0.2.tgz#9f1dc76926d6ccf452310564fd834ace059663d4"
   integrity sha512-Rx7yODZC1L/T8XKo/2kNzVAQaRE88AaMvI1EF/Xnj3GW2wzN6fop9DDWuFAKUVFH7vozkz26DzP0qyWLKLIVPQ==
-
-"unicode-properties@git+https://github.com/Hopding/unicode-properties.git#51a63d54730b78507206f07d19bd04186e5cffe7":
-  version "1.1.0"
-  resolved "git+https://github.com/Hopding/unicode-properties.git#51a63d54730b78507206f07d19bd04186e5cffe7"
-  dependencies:
-    base64-arraybuffer "^0.1.5"
-    pako "^1.0.6"
-    unicode-trie "^0.3.0"
 
 unicode-property-aliases-ecmascript@^1.0.4:
   version "1.0.4"

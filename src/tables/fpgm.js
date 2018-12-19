@@ -1,4 +1,4 @@
-import r from 'restructure';
+import r from '@pdf-lib/restructure';
 
 // A list of instructions that are executed once when a font is first used.
 // These instructions are known as the font program. The main use of this table

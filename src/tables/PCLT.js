@@ -1,4 +1,4 @@
-import r from 'restructure';
+import r from '@pdf-lib/restructure';
 
 // PCL 5 Table
 // NOTE: The PCLT table is strongly discouraged for OpenType fonts with TrueType outlines

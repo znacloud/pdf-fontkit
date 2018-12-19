@@ -1,7 +1,7 @@
 import DefaultShaper from './DefaultShaper';
 import StateMachine from 'dfa';
 import UnicodeTrie from 'unicode-trie';
-import unicode from 'unicode-properties';
+import unicode from '@pdf-lib/unicode-properties';
 import pako from 'pako';
 import * as base64 from 'base64-arraybuffer';
 import * as Script from '../../layout/Script';

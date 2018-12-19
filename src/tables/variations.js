@@ -1,5 +1,5 @@
 import {Feature} from './opentype';
-import r from 'restructure';
+import r from '@pdf-lib/restructure';
 
 /*******************
  * Variation Store *

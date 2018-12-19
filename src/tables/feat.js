@@ -1,4 +1,4 @@
-import r from 'restructure';
+import r from '@pdf-lib/restructure';
 
 let Setting = new r.Struct({
   setting: r.uint16,

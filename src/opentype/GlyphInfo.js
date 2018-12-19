@@ -1,4 +1,4 @@
-import unicode from 'unicode-properties';
+import unicode from '@pdf-lib/unicode-properties';
 import OTProcessor from './OTProcessor';
 
 export default class GlyphInfo {

@@ -1,4 +1,4 @@
-import r from 'restructure';
+import r from '@pdf-lib/restructure';
 
 // Set of instructions executed whenever the point size or font transformation change
 export default new r.Struct({

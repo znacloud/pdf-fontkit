@@ -1,4 +1,4 @@
-import r from 'restructure';
+import r from '@pdf-lib/restructure';
 
 let Signature = new r.Struct({
   format: r.uint32,

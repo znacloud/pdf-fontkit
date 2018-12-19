@@ -1,4 +1,4 @@
-import r from 'restructure';
+import r from '@pdf-lib/restructure';
 
 let Axis = new r.Struct({
   axisTag: new r.String(4),

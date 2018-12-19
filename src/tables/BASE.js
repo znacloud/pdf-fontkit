@@ -1,4 +1,4 @@
-import r from 'restructure';
+import r from '@pdf-lib/restructure';
 import {ScriptList, FeatureList, LookupList, Coverage, ClassDef, Device} from './opentype';
 import {ItemVariationStore} from './variations';
 

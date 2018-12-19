@@ -1,4 +1,4 @@
-import r from 'restructure';
+import r from '@pdf-lib/restructure';
 
 export default class CFFPointer extends r.Pointer {
   constructor(type, options = {}) {

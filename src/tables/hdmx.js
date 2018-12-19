@@ -1,4 +1,4 @@
-import r from 'restructure';
+import r from '@pdf-lib/restructure';
 
 let DeviceRecord = new r.Struct({
   pixelSize:      r.uint8,

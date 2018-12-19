@@ -1,4 +1,4 @@
-import r from 'restructure';
+import r from '@pdf-lib/restructure';
 
 let shortFrac = new r.Fixed(16, 'BE', 14);
 

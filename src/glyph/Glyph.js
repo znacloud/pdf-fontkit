@@ -1,6 +1,6 @@
 import { cache } from '../decorators';
 import Path from './Path';
-import unicode from 'unicode-properties';
+import unicode from '@pdf-lib/unicode-properties';
 import StandardNames from './StandardNames';
 
 /**

@@ -1,5 +1,5 @@
 import DefaultShaper from './DefaultShaper';
-import unicode from 'unicode-properties';
+import unicode from '@pdf-lib/unicode-properties';
 import UnicodeTrie from 'unicode-trie';
 import pako from 'pako';
 import * as base64 from 'base64-arraybuffer';

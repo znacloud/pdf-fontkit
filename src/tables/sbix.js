@@ -1,4 +1,4 @@
-import r from 'restructure';
+import r from '@pdf-lib/restructure';
 
 let ImageTable = new r.Struct({
   ppem: r.uint16,
