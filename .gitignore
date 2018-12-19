@@ -3,12 +3,9 @@ playground/
 .DS_Store
 coverage/
 coverage.html
-*.js.map
 .nyc_output
 yarn-error.log
 dist/
-es/
-lib/
 /**/trie.json
 /**/trieIndic.json
 /**/trieUse.json
