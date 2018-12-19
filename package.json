@@ -4,7 +4,6 @@
   "description": "An advanced font engine for Node and the browser",
   "main": "dist/fontkit.js",
   "unpkg": "dist/fontkit.min.js",
-  "module": "es/index.js",
   "scripts": {
     "make": "node Makefile.js",
     "clean": "node Makefile.js clean",
@@ -23,6 +22,8 @@
     "layout"
   ],
   "dependencies": {
+  },
+  "devDependencies": {
     "base64-arraybuffer": "^0.1.5",
     "brotli": "git+https://github.com/Hopding/brotli.js.git#0350970de946950ce47c1948913827931d88fc11",
     "browserify-optional": "^1.0.0",
@@ -31,12 +32,10 @@
     "dfa": "^1.0.0",
     "pako": "^1.0.6",
     "restructure": "^0.5.3",
-    "shelljs": "^0.8.3",
     "tiny-inflate": "^1.0.2",
     "unicode-properties": "git+https://github.com/Hopding/unicode-properties.git#d97bf46ebdcef78f838f0803ec3643e608410add",
-    "unicode-trie": "^0.3.0"
-  },
-  "devDependencies": {
+    "unicode-trie": "^0.3.0",
+
     "@babel/cli": "^7.2.0",
     "@babel/core": "^7.2.2",
     "@babel/node": "^7.2.2",
@@ -60,6 +59,7 @@
     "rollup-plugin-node-builtins": "^2.1.2",
     "rollup-plugin-node-globals": "^1.4.0",
     "rollup-plugin-node-resolve": "^4.0.0",
-    "rollup-plugin-uglify": "^6.0.0"
+    "rollup-plugin-uglify": "^6.0.0",
+    "shelljs": "^0.8.3"
   }
 }
