@@ -15,6 +15,7 @@ export default {
   output: {
     name: 'fontkit',
     format: MODULE_TYPE,
+    strict: false,
   },
   external: MODULE_TYPE === 'esm'
     ? ['pako'] // pdf-lib will provide pako for us

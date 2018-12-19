@@ -31,7 +31,7 @@
     "dfa": "^1.0.0",
     "iconv-lite": "^0.4.13",
     "pako": "^1.0.6",
-    "restructure": "^0.5.3",
+    "restructure": "git+https://github.com/Hopding/restructure.git#6f9fd535c3914685a55002ef9b48e08a684b9bec",
     "tiny-inflate": "^1.0.2",
     "unicode-properties": "git+https://github.com/Hopding/unicode-properties.git#51a63d54730b78507206f07d19bd04186e5cffe7",
     "unicode-trie": "^0.3.0"
