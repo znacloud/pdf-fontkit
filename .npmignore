@@ -1,0 +1,12 @@
+src/
+test/
+.gitignore
+.nycrc
+.travis.yml
+babel.config.js
+esdoc.json
+index.html
+Makefile.js
+rollup.config.js
+stats.html
+yarn.lock

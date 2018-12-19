@@ -1,6 +1,6 @@
 {
-  "name": "fontkit",
-  "version": "1.7.7",
+  "name": "@pdf-lib/fontkit",
+  "version": "0.0.0",
   "description": "An advanced font engine for Node and the browser",
   "main": "dist/fontkit.umd.js",
   "unpkg": "dist/fontkit.umd.min.js",
@@ -12,17 +12,6 @@
     "test": "mocha",
     "coverage": "cross-env BABEL_ENV=cover nyc mocha"
   },
-  "author": "Devon Govett <devongovett@gmail.com>",
-  "license": "MIT",
-  "keywords": [
-    "opentype",
-    "font",
-    "typography",
-    "subset",
-    "emoji",
-    "glyph",
-    "layout"
-  ],
   "dependencies": {
     "@pdf-lib/brotli": "^0.0.0",
     "@pdf-lib/restructure": "^0.0.0",
@@ -61,5 +50,27 @@
     "rollup-plugin-terser": "^3.0.0",
     "rollup-plugin-visualizer": "^0.9.2",
     "shelljs": "^0.8.3"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/Hopding/fontkit.git"
+  },
+  "keywords": [
+    "opentype",
+    "font",
+    "typography",
+    "subset",
+    "emoji",
+    "glyph",
+    "layout"
+  ],
+  "author": "Andrew Dillon <andrew.dillon.j@gmail.com>",
+  "contributors": [
+    "Devon Govett <devongovett@gmail.com> (http://badassjs.com/)"
+  ],
+  "bugs": {
+    "url": "https://github.com/Hopding/fontkit/issues"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/Hopding/fontkit"
 }

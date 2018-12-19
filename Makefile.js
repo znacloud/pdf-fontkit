@@ -6,6 +6,10 @@ require('shelljs/make');
 config.fatal = true;
 config.verbose = true;
 
+const { execFileSync } = require('child_process');
+
+const packageJson = require('./package.json');
+
 target.all = () => {
   target.clean();
   target.generateTrieJson();
@@ -60,4 +64,30 @@ target.clean = () => {
     'src/opentype/shapers/indic.json',
     'src/opentype/shapers/use.json',
   );
+};
+
+/* =============================== Release ================================== */
+
+target.releaseNext = () => {
+  const version = `${packageJson.version}@next`;
+  console.log('Releasing version', version);
+
+  target.all();
+
+  execFileSync('yarn', ['publish', '--tag', 'next', '--access', 'public'], { stdio: 'inherit' });
+};
+
+target.releaseLatest = async () => {
+  const currentBranch = exec('git rev-parse --abbrev-ref HEAD').stdout.trim();
+  if (currentBranch !== 'master') {
+    console.error('Must be on `master` branch to cut an @latest release.');
+    return;
+  }
+
+  const version = `${packageJson.version}@latest`;
+  console.log('Releasing version', version);
+
+  target.all();
+
+  execFileSync('yarn', ['publish', '--tag', 'latest', '--access', 'public'], { stdio: 'inherit' });
 };
