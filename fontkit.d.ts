@@ -41,19 +41,19 @@ export interface Path {
   /**
    * Moves the virtual pen to the given x, y coordinates.
    */
-  moveTo(x: number, y: number);
+  moveTo(x: number, y: number): void;
 
   /**
    * Adds a line to the path from the current point to the
    * given x, y coordinates.
    */
-  lineTo(x: number, y: number);
+  lineTo(x: number, y: number): void;
 
   /**
    * Adds a quadratic curve to the path from the current point to the
    * given x, y coordinates using cpx, cpy as a control point.
    */
-  quadraticCurveTo(cpx: number, cpy: number, x: number, y: number);
+  quadraticCurveTo(cpx: number, cpy: number, x: number, y: number): void;
 
   /**
    * Adds a bezier curve to the path from the current point to the
@@ -66,24 +66,24 @@ export interface Path {
     cp2y: number,
     x: number,
     y: number
-  );
+  ): void,
 
   /**
    * Closes the current sub-path by drawing a straight line back to the
    * starting point.
    */
-  closePath();
+  closePath(): void,
 
   /**
    * Compiles the path to a JavaScript function that can be applied with a
    * graphics context in order to render the path.
    */
-  toFunction();
+  toFunction(): Function,
 
   /**
    * Converts the path to an SVG path data string.
    */
-  toSVG();
+  toSVG(): string;
 }
 
 /**
@@ -126,7 +126,7 @@ export interface Glyph {
    * Renders the glyph to the given graphics context, at the specified
    * font size.
    */
-  render(context: any, size: number);
+  render(context: any, size: number): void;
 
   // Color Glyph Properties/Methods
   /**
@@ -134,7 +134,7 @@ export interface Glyph {
    * some properties about the image, along with the image data itself
    * (usually PNG).
    */
-  getImageForSize(size: number);
+  getImageForSize(size: number): Buffer;
 
   /**
    * For COLR glyphs, which are vector based, this returns an array of objects
@@ -230,13 +230,13 @@ export interface Subset {
   /**
    * Includes the given glyph object or glyph ID in the subset.
    */
-  includeGlyph(glyph: number | Glyph);
+  includeGlyph(glyph: number | Glyph): void;
 
   /**
    * Returns a stream containing the encoded font file that can be piped to a
    * destination, such as a file.
    */
-  encodeStream();
+  encodeStream(): void;
 }
 
 /**
