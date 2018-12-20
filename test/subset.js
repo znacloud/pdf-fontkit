@@ -2,13 +2,14 @@ import fontkit from '../src';
 import assert from 'assert';
 import concat from 'concat-stream';
 import CFFFont from '../src/cff/CFFFont';
-import r from 'restructure';
+import r from '@pdf-lib/restructure';
 import CFFGlyph from '../src/glyph/CFFGlyph';
 import fs from 'fs';
 
 describe('font subsetting', function() {
   describe('truetype subsetting', function() {
-    let font = fontkit.openSync(__dirname + '/data/OpenSans/OpenSans-Regular.ttf');
+    const fontData = fs.readFileSync(__dirname + '/data/OpenSans/OpenSans-Regular.ttf');
+    const font = fontkit.create(fontData);
 
     it('should create a TTFSubset instance', function() {
       let subset = font.createSubset();
@@ -28,11 +29,13 @@ describe('font subsetting', function() {
         done();
       }));
     });
-    
+
     it('should re-encode variation glyphs', function(done) {
       if (!fs.existsSync('/Library/Fonts/Skia.ttf')) return done();
-      
-      let font = fontkit.openSync('/Library/Fonts/Skia.ttf', 'Bold');
+
+      const fontData = fs.readFileSync('/Library/Fonts/Skia.ttf');
+      const font = fontkit.create(fontData, 'Bold');
+
       let subset = font.createSubset();
       for (let glyph of font.glyphsForString('e')) {
         subset.includeGlyph(glyph);
@@ -59,7 +62,8 @@ describe('font subsetting', function() {
   });
 
   describe('CFF subsetting', function() {
-    let font = fontkit.openSync(__dirname + '/data/SourceSansPro/SourceSansPro-Regular.otf');
+    const fontData = fs.readFileSync(__dirname + '/data/SourceSansPro/SourceSansPro-Regular.otf');
+    const font = fontkit.create(fontData);
 
     it('should create a CFFSubset instance', function() {
       let subset = font.createSubset();
@@ -84,7 +88,9 @@ describe('font subsetting', function() {
     });
 
     it('should handle CID fonts', function(done) {
-      let f = fontkit.openSync(__dirname + '/data/NotoSansCJK/NotoSansCJKkr-Regular.otf');
+      const fontData = fs.readFileSync(__dirname + '/data/NotoSansCJK/NotoSansCJKkr-Regular.otf');
+      const font = fontkit.create(fontData);
+
       let subset = f.createSubset();
       let iterable = f.glyphsForString('갈휸');
       for (let i = 0; i < iterable.length; i++) {

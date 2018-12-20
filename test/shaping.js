@@ -1,11 +1,17 @@
 import fontkit from '../src';
 import assert from 'assert';
+import fs from 'fs';
 
 describe('shaping', function() {
   let fontCache = {};
   let test = (description, font, text, output) => {
     it(description, function() {
-      let f = fontCache[font] || (fontCache[font] = fontkit.openSync(__dirname + '/data/' + font));
+      let f = fontCache[font];
+      if (!f) {
+        const fontData = fs.readFileSync(__dirname + '/data/' + font);
+        f = fontkit.create(fontData);
+      }
+
       let {glyphs, positions} = f.layout(text);
 
       // Generate a compact string representation of the results
@@ -28,7 +34,8 @@ describe('shaping', function() {
   };
 
   describe('general shaping tests', function() {
-    let font = fontkit.openSync(__dirname + '/data/amiri/amiri-regular.ttf');
+    const fontData = fs.readFileSync(__dirname + '/data/amiri/amiri-regular.ttf');
+    const font = fontkit.create(fontData);
 
     it('should use correct script and language when features are not specified', function() {
       let {glyphs} = font.layout('۴', 'arab', 'URD');
@@ -70,7 +77,8 @@ describe('shaping', function() {
   });
 
   describe('hangul shaper', function() {
-    let font = fontkit.openSync(__dirname + '/data/NotoSansCJK/NotoSansCJKkr-Regular.otf');
+    const fontData = fs.readFileSync(__dirname + '/data/NotoSansCJK/NotoSansCJKkr-Regular.otf');
+    const font = fontkit.create(fontData);
 
     it('should use composed versions if supported by the font', function() {
       let {glyphs} = font.layout('\uD734\uAC00\u0020\uAC00\u002D\u002D\u0020\u0028\uC624\u002D\u002D\u0029');

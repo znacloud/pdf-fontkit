@@ -1,11 +1,15 @@
 import fontkit from '../src';
 import assert from 'assert';
 import BBox from '../src/glyph/BBox';
+import fs from 'fs';
 
 describe('glyphs', function() {
   describe('truetype glyphs', function() {
-    let font = fontkit.openSync(__dirname + '/data/OpenSans/OpenSans-Regular.ttf');
-    let mada = fontkit.openSync(__dirname + '/data/Mada/Mada-VF.ttf');
+    const fontData = fs.readFileSync(__dirname + '/data/OpenSans/OpenSans-Regular.ttf');
+    const font = fontkit.create(fontData);
+
+    const madaData = fs.readFileSync(__dirname + '/data/Mada/Mada-VF.ttf');
+    const mada = fontkit.create(fontData);
 
     it('should get a TTFGlyph', function() {
       let glyph = font.getGlyph(39); // D
@@ -64,7 +68,8 @@ describe('glyphs', function() {
   });
 
   describe('CFF glyphs', function() {
-    let font = fontkit.openSync(__dirname + '/data/SourceSansPro/SourceSansPro-Regular.otf');
+    const fontData = fs.readFileSync(__dirname + '/data/SourceSansPro/SourceSansPro-Regular.otf');
+    const font = fontkit.create(fontData);
 
     it('should get a CFFGlyph', function() {
       let glyph = font.getGlyph(5); // D
@@ -93,7 +98,8 @@ describe('glyphs', function() {
   });
 
   describe('SBIX glyphs', function() {
-    let font = fontkit.openSync(__dirname + '/data/ss-emoji/ss-emoji-apple.ttf');
+    const fontData = fs.readFileSync(__dirname + '/data/ss-emoji/ss-emoji-apple.ttf');
+    const font = fontkit.create(fontData);
 
     it('should get an SBIXGlyph', function() {
       let glyph = font.glyphsForString('😜')[0];
@@ -123,7 +129,8 @@ describe('glyphs', function() {
   });
 
   describe('COLR glyphs', function() {
-    let font = fontkit.openSync(__dirname + '/data/ss-emoji/ss-emoji-microsoft.ttf');
+    const fontData = fs.readFileSync(__dirname + '/data/ss-emoji/ss-emoji-microsoft.ttf');
+    const font = fontkit.create(fontData);
 
     it('should get an SBIXGlyph', function() {
       let glyph = font.glyphsForString('😜')[0];
@@ -156,7 +163,8 @@ describe('glyphs', function() {
   });
 
   describe('WOFF glyphs', function() {
-    let font = fontkit.openSync(__dirname + '/data/SourceSansPro/SourceSansPro-Regular.woff');
+    const fontData = fs.readFileSync(__dirname + '/data/SourceSansPro/SourceSansPro-Regular.woff');
+    const font = fontkit.create(fontData);
 
     it('should get a TTFGlyph', function() {
       let glyph = font.glyphsForString('T')[0];
@@ -175,7 +183,8 @@ describe('glyphs', function() {
   });
 
   describe('WOFF2 glyph', function() {
-    let font = fontkit.openSync(__dirname + '/data/SourceSansPro/SourceSansPro-Regular.woff2');
+    const fontData = fs.readFileSync(__dirname + '/data/SourceSansPro/SourceSansPro-Regular.woff2');
+    const font = fontkit.create(fontData);
 
     it('should get a WOFF2Glyph', function() {
       let glyph = font.glyphsForString('T')[0];

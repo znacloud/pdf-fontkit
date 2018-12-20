@@ -1,15 +1,18 @@
 import fontkit from '../src';
 import assert from 'assert';
+import fs from 'fs';
 
 describe('glyph positioning', function() {
   describe('basic positioning', function() {
-    let font = fontkit.openSync(__dirname + '/data/SourceSansPro/SourceSansPro-Regular.otf');
+    const fontData = fs.readFileSync(__dirname + '/data/SourceSansPro/SourceSansPro-Regular.otf');
+    const font = fontkit.create(fontData);
 
     it('should get a glyph width', () => assert.equal(font.getGlyph(5).advanceWidth, 615));
   });
 
   describe('opentype positioning', function() {
-    let font = fontkit.openSync(__dirname + '/data/SourceSansPro/SourceSansPro-Regular.otf');
+    const fontData = fs.readFileSync(__dirname + '/data/SourceSansPro/SourceSansPro-Regular.otf');
+    const font = fontkit.create(fontData);
 
     it('should apply opentype GPOS features', function() {
       let {positions} = font.layout('Twitter');
@@ -23,7 +26,8 @@ describe('glyph positioning', function() {
   });
 
   describe('AAT features', function() {
-    let font = fontkit.openSync(__dirname + '/data/Play/Play-Regular.ttf');
+    const fontData = fs.readFileSync(__dirname + '/data/Play/Play-Regular.ttf');
+    const font = fontkit.create(fontData);
 
     it('should apply kerning by default', function() {
       let {positions} = font.layout('Twitter');

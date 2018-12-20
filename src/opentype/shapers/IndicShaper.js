@@ -21,8 +21,18 @@ import base64DeflatedTrie from './trieIndic.json';
 
 // Trie is serialized as a Buffer in node, but here
 // we may be running in a browser so we make an Uint8Array
-const indicMachine = JSON.parse(String.fromCharCode(...pako.inflate(base64.decode(base64DeflatedIndicMachine))));
-const useData = JSON.parse(String.fromCharCode(...pako.inflate(base64.decode(base64DeflatedUseData))));
+const indicMachine = JSON.parse(
+  String.fromCharCode.apply(
+    String,
+    pako.inflate(base64.decode(base64DeflatedIndicMachine)),
+  ),
+);
+const useData = JSON.parse(
+  String.fromCharCode.apply(
+    String,
+    pako.inflate(base64.decode(base64DeflatedUseData)),
+  ),
+);
 const trieData = pako.inflate(base64.decode(base64DeflatedTrie));
 
 const {decompositions} = useData;
