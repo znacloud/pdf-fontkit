@@ -1,3 +1,4 @@
+import './addTestHelpersToFontkit';
 import fontkit from '../src';
 import assert from 'assert';
 import fs from 'fs';
@@ -137,4 +138,3 @@ describe('variations', function() {
     });
   });
 });
-

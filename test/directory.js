@@ -1,3 +1,4 @@
+import './addTestHelpersToFontkit';
 import fontkit from '../src';
 import assert from 'assert';
 
