@@ -13,6 +13,9 @@
     "coverage": "cross-env BABEL_ENV=cover nyc mocha"
   },
   "dependencies": {
+    "pako": "^1.0.6"
+  },
+  "devDependencies": {
     "@pdf-lib/brotli": "^0.0.0",
     "@pdf-lib/restructure": "^0.0.1",
     "@pdf-lib/unicode-properties": "^0.0.1",
@@ -21,11 +24,9 @@
     "deep-equal": "^1.0.0",
     "dfa": "^1.0.0",
     "iconv-lite": "^0.4.13",
-    "pako": "^1.0.6",
     "tiny-inflate": "^1.0.2",
-    "unicode-trie": "^0.3.0"
-  },
-  "devDependencies": {
+    "unicode-trie": "^0.3.0",
+    
     "@babel/cli": "^7.2.0",
     "@babel/core": "^7.2.2",
     "@babel/node": "^7.2.2",
