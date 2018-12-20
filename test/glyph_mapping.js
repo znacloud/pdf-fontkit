@@ -108,7 +108,7 @@ describe('character to glyph mapping', function() {
 
     it('should apply indic reordering features', function() {
       const fontData = fs.readFileSync(__dirname + '/data/Khmer/Khmer.ttf');
-      const font = fontkit.create(fontData);
+      const f = fontkit.create(fontData);
 
       let {glyphs} = f.layout('ខ្ញុំអាចញ៉ាំកញ្ចក់បាន ដោយគ្មានបញ្ហា');
       assert.deepEqual(glyphs.map(g => g.id), [

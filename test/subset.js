@@ -89,7 +89,7 @@ describe('font subsetting', function() {
 
     it('should handle CID fonts', function(done) {
       const fontData = fs.readFileSync(__dirname + '/data/NotoSansCJK/NotoSansCJKkr-Regular.otf');
-      const font = fontkit.create(fontData);
+      const f = fontkit.create(fontData);
 
       let subset = f.createSubset();
       let iterable = f.glyphsForString('갈휸');
