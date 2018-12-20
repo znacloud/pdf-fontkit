@@ -1,6 +1,6 @@
 {
   "name": "@pdf-lib/fontkit",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "An advanced font engine for Node and the browser",
   "main": "dist/fontkit.umd.js",
   "unpkg": "dist/fontkit.umd.min.js",
@@ -26,7 +26,7 @@
     "iconv-lite": "^0.4.13",
     "tiny-inflate": "^1.0.2",
     "unicode-trie": "^0.3.0",
-    
+
     "@babel/cli": "^7.2.0",
     "@babel/core": "^7.2.2",
     "@babel/node": "^7.2.2",
