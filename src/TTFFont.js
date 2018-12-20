@@ -539,6 +539,8 @@ export default class TTFFont {
 
   // Standardized format plugin API
   getFont(name) {
+    console.log('GETTING VARIATION:', name);
+    console.log('NV:', Object.getOwnPropertyNames(this.namedVariations))
     return this.getVariation(name);
   }
 }
