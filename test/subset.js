@@ -8,8 +8,7 @@ import fs from 'fs';
 
 describe('font subsetting', function() {
   describe('truetype subsetting', function() {
-    const fontData = fs.readFileSync(__dirname + '/data/OpenSans/OpenSans-Regular.ttf');
-    const font = fontkit.create(fontData);
+    let font = fontkit.openSync(__dirname + '/data/OpenSans/OpenSans-Regular.ttf');
 
     it('should create a TTFSubset instance', function() {
       let subset = font.createSubset();
@@ -33,9 +32,7 @@ describe('font subsetting', function() {
     it('should re-encode variation glyphs', function(done) {
       if (!fs.existsSync('/Library/Fonts/Skia.ttf')) return done();
 
-      const fontData = fs.readFileSync('/Library/Fonts/Skia.ttf');
-      const font = fontkit.create(fontData, 'Bold');
-
+      let font = fontkit.openSync('/Library/Fonts/Skia.ttf', 'Bold');
       let subset = font.createSubset();
       for (let glyph of font.glyphsForString('e')) {
         subset.includeGlyph(glyph);
@@ -62,8 +59,7 @@ describe('font subsetting', function() {
   });
 
   describe('CFF subsetting', function() {
-    const fontData = fs.readFileSync(__dirname + '/data/SourceSansPro/SourceSansPro-Regular.otf');
-    const font = fontkit.create(fontData);
+    let font = fontkit.openSync(__dirname + '/data/SourceSansPro/SourceSansPro-Regular.otf');
 
     it('should create a CFFSubset instance', function() {
       let subset = font.createSubset();
@@ -88,9 +84,7 @@ describe('font subsetting', function() {
     });
 
     it('should handle CID fonts', function(done) {
-      const fontData = fs.readFileSync(__dirname + '/data/NotoSansCJK/NotoSansCJKkr-Regular.otf');
-      const f = fontkit.create(fontData);
-
+      let f = fontkit.openSync(__dirname + '/data/NotoSansCJK/NotoSansCJKkr-Regular.otf');
       let subset = f.createSubset();
       let iterable = f.glyphsForString('갈휸');
       for (let i = 0; i < iterable.length; i++) {

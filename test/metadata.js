@@ -1,11 +1,9 @@
 import fontkit from '../src';
 import assert from 'assert';
 import BBox from '../src/glyph/BBox';
-import fs from 'fs';
 
 describe('metadata', function() {
-  const fontData = fs.readFileSync(__dirname + '/data/NotoSans/NotoSans.ttc');
-  const font = fontkit.create(fontData, 'NotoSans');
+  let font = fontkit.openSync(__dirname + '/data/NotoSans/NotoSans.ttc', 'NotoSans');
 
   it('has metadata properties', function() {
     assert.equal(font.fullName, 'Noto Sans');

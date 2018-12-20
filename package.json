@@ -14,8 +14,8 @@
   },
   "dependencies": {
     "@pdf-lib/brotli": "^0.0.0",
-    "@pdf-lib/restructure": "^0.0.0",
-    "@pdf-lib/unicode-properties": "^0.0.0",
+    "@pdf-lib/restructure": "^0.0.1",
+    "@pdf-lib/unicode-properties": "^0.0.1",
     "base64-arraybuffer": "^0.1.5",
     "clone": "^1.0.1",
     "deep-equal": "^1.0.0",

@@ -1,10 +1,8 @@
 import fontkit from '../src';
 import assert from 'assert';
-import fs from 'fs';
 
 describe('metadata', function() {
-  const fontData = fs.readFileSync(__dirname + '/data/OpenSans/OpenSans-Regular.ttf');
-  const font = fontkit.create(fontData);
+  let font = fontkit.openSync(__dirname + '/data/OpenSans/OpenSans-Regular.ttf');
 
   it('decodes SFNT directory values correctly', function() {
     let dir = font.directory;
