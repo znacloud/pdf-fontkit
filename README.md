@@ -19,7 +19,7 @@ Listed below are changes that have been made in this fork:
 * Build ES modules:
   * [dbe8e9d](https://github.com/Hopding/fontkit/commit/dbe8e9da4e8f2e23f507ba5a767a8109e81fb7ab)
   * [9363d1f](https://github.com/Hopding/fontkit/commit/9363d1f8e97985d8a94ee6dac1fac39631ee3c77)
-* Bundle Node dependencies ('stream', 'util', 'buffer') into UMD and ES modules so consumers of this lib don't have to deal with them:
+* Bundle Node dependencies (`stream`, `util`, `Buffer`) into UMD and ES modules so consumers of this lib don't have to deal with them:
   * [9363d1f](https://github.com/Hopding/fontkit/commit/9363d1f8e97985d8a94ee6dac1fac39631ee3c77)
 * Accept `Uint8Array` objects for font data instead of `Buffer` objects, so consumers can stick to plain JS regardless of their environment:
   * [9363d1f-R12](https://github.com/Hopding/fontkit/commit/9363d1f8e97985d8a94ee6dac1fac39631ee3c77#diff-d7e697eff3913f1acaacac8002c3b05eR12)
