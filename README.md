@@ -1,18 +1,46 @@
-**NOTE:** All credit for this code belongs to the developers of https://github.com/devongovett/fontkit
 # Purpose of this Fork
-This fork was created for use in https://github.com/Hopding/pdf-lib.
+This project is a fork of https://github.com/foliojs/fontkit created for use in https://github.com/Hopding/pdf-lib.
 
-The original repository serialized and loaded the trie data using a binary file. This worked fine in Node, because `fs.readFileSync` was being called to load the serialized data into a `Buffer` object. In order to support use in the browser, Browserify and [`brfs`](https://github.com/browserify/brfs) were used to inline the binary data in the various `.js` files, and thereby remove the calls to `fs.readFileSync`.
+Listed below are changes that have been made in this fork:
 
-This works fine if you are in a Node environment, or are using Browserify to bundle your code for use in the browser. But it doesn't work so well if you aren't doing either of those things. E.g. I was writing an app built with `create-react-app`, and the binary data was not being inlined for this dependency.
+* Store binary data as compressed base64 JSON so the `fs` module isn't needed to read it back:
+  * [968e35c](https://github.com/Hopding/fontkit/commit/968e35c158589294e9543818f56d0b229b95a475)
+  * [99a35c7](/Hopding/fontkit/commit/99a35c7b0f0f6549d7727bcbc1ddabb7f9ca19bf)
+  * [2f1445d](/Hopding/fontkit/commit/2f1445d9a3f8426bc259690819eea8306a98545a)
+  * [f674bf2-R24](https://github.com/Hopding/fontkit/commit/f674bf2e3c8a8e0a34083e19f0abe65df20520e3#diff-b61f8676a8a37c519e9c3c86c4676208R24), [f674bf2-R13](https://github.com/Hopding/fontkit/commit/f674bf2e3c8a8e0a34083e19f0abe65df20520e3#diff-a73febb5d14ad8d9d7ab6ac378a698aaR13)
+* Rewrote `Makefile` to `Makefile.js` using `shelljs`:
+  * [a246e7f](https://github.com/Hopding/fontkit/commit/a246e7fda8c0bb5df4be355a993e0ba59f07300e)
+* Update to Babel 7:
+  * [70049f8](https://github.com/Hopding/fontkit/commit/70049f8f038145cc0caca83c75e0b76f49d11f52)
+  * [8d5b29b](https://github.com/Hopding/fontkit/commit/8d5b29bd00b752a6ab9348e6be1997e201055d31)
+* Build UMD modules:
+  * [cce995c](https://github.com/Hopding/fontkit/commit/cce995c3378c35b247ed2965e15eb92ffad9ea09)
+  * [08cacef](https://github.com/Hopding/fontkit/commit/08cacefa3e745f83a2c95051e38985b02aa2f16d)
+* Build ES modules:
+  * [dbe8e9d](https://github.com/Hopding/fontkit/commit/dbe8e9da4e8f2e23f507ba5a767a8109e81fb7ab)
+  * [9363d1f](https://github.com/Hopding/fontkit/commit/9363d1f8e97985d8a94ee6dac1fac39631ee3c77)
+* Bundle Node dependencies ('stream', 'util', 'buffer') into UMD and ES modules so consumers of this lib don't have to deal with them:
+  * [9363d1f](https://github.com/Hopding/fontkit/commit/9363d1f8e97985d8a94ee6dac1fac39631ee3c77)
+* Accept `Uint8Array` objects for font data instead of `Buffer` objects, so consumers can stick to plain JS regardless of their environment:
+  * [9363d1f-R12](https://github.com/Hopding/fontkit/commit/9363d1f8e97985d8a94ee6dac1fac39631ee3c77#diff-d7e697eff3913f1acaacac8002c3b05eR12)
+* Add TypeScript declaration file:
+  * [387ebc4](https://github.com/Hopding/fontkit/commit/387ebc418cc04be51d82d39e05f4db01b1bf063f)
+  * [3bafdbc](https://github.com/Hopding/fontkit/commit/3bafdbc3656ebba5251f8d4dc77dcc4b6c11afa6)
+  * [b0241e7](https://github.com/Hopding/fontkit/commit/b0241e7c30cdb83bda6867aa8c9229c1ab1cb8e3)
+* Remove calls to `new Function()` to allow usage on CSP sites:
+  * [e3dcc8a](https://github.com/Hopding/fontkit/commit/e3dcc8aad014081b8106c47d89049ba9e6f3dd48)
+* Released to NPM as `@pdf-lib/fontkit`
+  * [873b05d](https://github.com/Hopding/fontkit/commit/873b05d23aecb9f0142fc3ebda593fd2a7d81c17)
 
-I resolved this by simply serializing the trie data to a JSON file, which allows it to be loaded into the necessary `.js` files without using Browserify. Of course, this means that the trie data is not stored as efficiently, but that is not a concern for me.
-
-(also see https://github.com/Hopding/unicode-properties).
+Also see
+* https://github.com/Hopding/unicode-properties
+* https://github.com/Hopding/brotli.js
+* https://github.com/Hopding/restructure
+* https://github.com/Hopding/png-ts
 
 # fontkit
 
-Fontkit is an advanced font engine for Node and the browser, used by [PDFKit](https://github.com/devongovett/pdfkit). It supports many font formats, advanced glyph substitution and layout features, glyph path extraction, color emoji glyphs, font subsetting, and more.
+Fontkit is an advanced font engine for Node and the browser, used by [PDFKit](https://github.com/devongovett/pdfkit) and [`pdf-lib`](https://github.com/Hopding/pdf-lib). It supports many font formats, advanced glyph substitution and layout features, glyph path extraction, color emoji glyphs, font subsetting, and more.
 
 ## Features
 
@@ -27,27 +55,25 @@ Fontkit is an advanced font engine for Node and the browser, used by [PDFKit](ht
 * Support for AAT variation glyphs, allowing for nearly infinite design control over weight, width, and other axes.
 * Font subsetting support - create a new font including only the specified glyphs
 
-## Installation
-
-    npm install fontkit
-
 ## Example
 
-```javascript
-var fontkit = require('fontkit');
+```js
+import fontkit from '@pdf-lib/fontkit';
+import fs from 'fs';
 
 // open a font synchronously
-var font = fontkit.openSync('font.ttf');
+const fontData = fs.readFileSync('font.ttf');
+const font = fontkit.create(fontData);
 
 // layout a string, using default shaping features.
 // returns a GlyphRun, describing glyphs and positions.
-var run = font.layout('hello world!');
+const run = font.layout('hello world!');
 
 // get an SVG path for a glyph
-var svg = run.glyphs[0].path.toSVG();
+const svg = run.glyphs[0].path.toSVG();
 
 // create a font subset
-var subset = font.createSubset();
+const subset = font.createSubset();
 run.glyphs.forEach(function(glyph) {
   subset.includeGlyph(glyph);
 });
@@ -56,15 +82,37 @@ subset.encodeStream()
       .pipe(fs.createWriteStream('subset.ttf'));
 ```
 
+## Installation
+### NPM Module
+To install the latest stable version:
+```bash
+# With npm
+npm install --save @pdf-lib/fontkit
+
+# With yarn
+yarn add  @pdf-lib/fontkit
+```
+This assumes you're using [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/lang/en/) as your package manager.
+
+### UMD Module
+You can also download `@pdf-lib/fontkit` as a UMD module from [unpkg](https://unpkg.com/#/). The UMD builds have been compiled to ES5, so they should work [in any modern browser](https://caniuse.com/#feat=es5). UMD builds are useful if you aren't using a package manager or module bundler. For example, you can use them directly in the `<script>` tag of an HTML page.
+
+The following builds are available:
+
+* https://unpkg.com/@pdf-lib/fontkit/dist/fontkit.umd.js
+* https://unpkg.com/@pdf-lib/fontkit/dist/fontkit.umd.min.js
+
+When using a UMD build, you will have access to a global `window.UnicodeProperties` variable. This variable contains the object exported by `@pdf-lib/unicode-properties`. For example:
+
+```javascript
+// NPM module
+import fontkit from '@pdf-lib/fontkit';
+
+// UMD module
+var fontkit = window.fontkit;
+```
+
 ## API
-
-### `fontkit.open(filename, postscriptName = null, callback(err, font))`
-
-Opens a font file asynchronously, and calls the callback with a font object. For collection fonts (such as TrueType collection files), you can pass a `postscriptName` to get that font out of the collection instead of a collection object.
-
-### `fontkit.openSync(filename, postscriptName = null)`
-
-Opens a font file synchronously, and returns a font object. For collection fonts (such as TrueType collection files), you can pass a `postscriptName` to get that font out of the collection instead of a collection object.
 
 ### `fontkit.create(buffer, postscriptName = null)`
 
@@ -274,5 +322,4 @@ Includes the given glyph object or glyph ID in the subset.
 Returns a [stream](https://nodejs.org/api/stream.html) containing the encoded font file that can be piped to a destination, such as a file.
 
 ## License
-
-MIT
+[MIT](https://choosealicense.com/licenses/mit/)
