@@ -4,14 +4,13 @@ export as namespace fontkit;
  * Represents a glyph bounding box
  */
 export interface BoundingBox {
-  minX: number; /** The minimum X position in the bounding box */
-  minY: number; /** The minimum Y position in the bounding box */
-  maxX: number; /** The maxmimum X position in the bounding box */
-  maxY: number; /** The maxmimum Y position in the bounding box */
-  width: number; /** The width of the bounding box */
-  height: number; /** The height of the bounding box */
+  minX: number /** The minimum X position in the bounding box */;
+  minY: number /** The minimum Y position in the bounding box */;
+  maxX: number /** The maxmimum X position in the bounding box */;
+  maxY: number /** The maxmimum Y position in the bounding box */;
+  width: number /** The width of the bounding box */;
+  height: number /** The height of the bounding box */;
 }
-
 
 /**
  * Path objects are returned by glyphs and represent the actual vector outlines
@@ -19,7 +18,6 @@ export interface BoundingBox {
  * or to functions that can be applied to render the path to a graphics context.
  */
 export interface Path {
-
   /**
    * This property represents the path’s bounding box, i.e. the smallest
    * rectangle that contains the entire path shape. This is the exact
@@ -36,7 +34,6 @@ export interface Path {
    * visible shape.
    */
   cbox: BoundingBox;
-
 
   /**
    * Moves the virtual pen to the given x, y coordinates.
@@ -66,19 +63,19 @@ export interface Path {
     cp2y: number,
     x: number,
     y: number
-  ): void,
+  ): void;
 
   /**
    * Closes the current sub-path by drawing a straight line back to the
    * starting point.
    */
-  closePath(): void,
+  closePath(): void;
 
   /**
    * Compiles the path to a JavaScript function that can be applied with a
    * graphics context in order to render the path.
    */
-  toFunction(): Function,
+  toFunction(): Function;
 
   /**
    * Converts the path to an SVG path data string.
@@ -98,14 +95,14 @@ export interface Path {
  */
 export interface Glyph {
   // Properties
-  id: number; /** The glyph's id in the font */
+  id: number /** The glyph's id in the font */;
   /**
    * An array of unicode code points that are represented by this glyph. There
    * can be multiple code points in the case of ligatures and other glyphs that
    * represent multiple visual characters.
    */
   codePoints: number[];
-  path: Path; /** Vector Path object representing the glyph */
+  path: Path /** Vector Path object representing the glyph */;
   /**
    * The Glyph’s bounding box, i.e. the rectangle that encloses the glyph
    * outline as tightly as possible.
@@ -119,7 +116,7 @@ export interface Glyph {
    * to compute.
    */
   cbox: BoundingBox;
-  advanceWidth: number; /** The Glyph's advance width */
+  advanceWidth: number /** The Glyph's advance width */;
 
   // Methods
   /**
@@ -202,7 +199,7 @@ export interface GlyphRun {
    * The direction requested for shaping, as passed in (either ltr or rtl).
    * If `null`, the default direction of the script is used.
    */
-  direction: 'ltr' | 'rtl' | null;
+  direction: "ltr" | "rtl" | null;
 
   /**
    * The features requested during shaping. This is a combination of user
@@ -220,23 +217,31 @@ export interface GlyphRun {
    */
   advanceHeight: number;
 
- /**
-  * The bounding box containing all glyphs in the run.
-  */
+  /**
+   * The bounding box containing all glyphs in the run.
+   */
   bbox: BoundingBox;
+}
+
+export interface SubsetStream {
+  on: (
+    eventType: "data" | "end",
+    callback: (data: Uint8Array) => any
+  ) => SubsetStream;
 }
 
 export interface Subset {
   /**
    * Includes the given glyph object or glyph ID in the subset.
+   * Returns the glyph's new ID in the subset.
    */
-  includeGlyph(glyph: number | Glyph): void;
+  includeGlyph(glyph: number | Glyph): number;
 
   /**
    * Returns a stream containing the encoded font file that can be piped to a
    * destination, such as a file.
    */
-  encodeStream(): void;
+  encodeStream(): SubsetStream;
 }
 
 /**
@@ -254,21 +259,25 @@ export interface Font {
   version: string | null;
 
   // Metrics properties
-  unitsPerEm: number; /** Size of the font’s internal coordinate grid */
-  ascent: number; /** The font’s ascender */
-  descent: number; /** The font’s descender */
-  lineGap: number; /** Amount of space that should be included between lines */
-  underlinePosition: number; /** Offset from the normal underline position that should be used */
-  underlineThickness: number; /** Weight of the underline that should be used */
-  italicAngle: number; /** If this is an italic font, the angle the cursor should be drawn at to match the font design */
-  capHeight: number; /** Height of capital letters above the baseline. */
-  xHeight: number; /** Height of lower case letters. */
-  bbox: BoundingBox; /** Font’s bounding box, i.e. the box that encloses all glyphs in the font */
+  unitsPerEm: number /** Size of the font’s internal coordinate grid */;
+  ascent: number /** The font’s ascender */;
+  descent: number /** The font’s descender */;
+  lineGap: number /** Amount of space that should be included between lines */;
+  underlinePosition: number /** Offset from the normal underline position that should be used */;
+  underlineThickness: number /** Weight of the underline that should be used */;
+  italicAngle: number /** If this is an italic font, the angle the cursor should be drawn at to match the font design */;
+  capHeight: number /** Height of capital letters above the baseline. */;
+  xHeight: number /** Height of lower case letters. */;
+  bbox: BoundingBox /** Font’s bounding box, i.e. the box that encloses all glyphs in the font */;
 
   // Other properties
-  numGlyphs: number; /** Number of glyphs in the font */
-  characterSet: number[]; /** Array of all of the unicode code points supported by the font */
-  availableFeatures: any[]; /** Array of all OpenType feature tags (or mapped AAT tags) supported by the font */
+  numGlyphs: number /** Number of glyphs in the font */;
+  characterSet: number[] /** Array of all of the unicode code points supported by the font */;
+  availableFeatures: any[] /** Array of all OpenType feature tags (or mapped AAT tags) supported by the font */;
+  cff: any;
+  "OS/2": { sFamilyClass: number };
+  head: { macStyle: { italic: boolean } };
+  post: { isFixedPitch: boolean };
 
   // Character to Glyph Mapping Methods
 
@@ -318,7 +327,7 @@ export interface Font {
    * code points this glyph represents for your use later, and it will be
    * stored in the glyph object.
    */
-  getGlyph(glyphId: number, codePoints: number[]): Glyph;
+  getGlyph(glyphId: number, codePoints?: number[]): Glyph;
 
   /**
    * Returns a Subset object for this font.
