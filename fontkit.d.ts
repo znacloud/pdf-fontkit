@@ -318,7 +318,7 @@ export interface Font {
    * in addition to the default set. If this is an AAT font, the OpenType
    * feature tags are mapped to AAT features.
    */
-  layout(string: string, features: any[]): GlyphRun;
+  layout(string: string, features?: any[]): GlyphRun;
 
   // Other Methods
 
