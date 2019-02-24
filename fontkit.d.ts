@@ -62,7 +62,7 @@ export interface Path {
     cp2x: number,
     cp2y: number,
     x: number,
-    y: number
+    y: number,
   ): void;
 
   /**
@@ -131,7 +131,7 @@ export interface Glyph {
    * some properties about the image, along with the image data itself
    * (usually PNG).
    */
-  getImageForSize(size: number): Buffer;
+  getImageForSize(size: number): Uint8Array;
 
   /**
    * For COLR glyphs, which are vector based, this returns an array of objects
@@ -199,7 +199,7 @@ export interface GlyphRun {
    * The direction requested for shaping, as passed in (either ltr or rtl).
    * If `null`, the default direction of the script is used.
    */
-  direction: "ltr" | "rtl" | null;
+  direction: 'ltr' | 'rtl' | null;
 
   /**
    * The features requested during shaping. This is a combination of user
@@ -225,8 +225,8 @@ export interface GlyphRun {
 
 export interface SubsetStream {
   on: (
-    eventType: "data" | "end",
-    callback: (data: Uint8Array) => any
+    eventType: 'data' | 'end',
+    callback: (data: Uint8Array) => any,
   ) => SubsetStream;
 }
 
@@ -275,7 +275,7 @@ export interface Font {
   characterSet: number[] /** Array of all of the unicode code points supported by the font */;
   availableFeatures: any[] /** Array of all OpenType feature tags (or mapped AAT tags) supported by the font */;
   cff: any;
-  "OS/2": { sFamilyClass: number };
+  'OS/2': { sFamilyClass: number };
   head: { macStyle: { italic: boolean } };
   post: { isFixedPitch: boolean };
 
