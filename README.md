@@ -102,7 +102,7 @@ The following builds are available:
 * https://unpkg.com/@pdf-lib/fontkit/dist/fontkit.umd.js
 * https://unpkg.com/@pdf-lib/fontkit/dist/fontkit.umd.min.js
 
-When using a UMD build, you will have access to a global `window.UnicodeProperties` variable. This variable contains the object exported by `@pdf-lib/unicode-properties`. For example:
+When using a UMD build, you will have access to a global `window.fontkit` variable. This variable contains the object exported by `@pdf-lib/fontkit`. For example:
 
 ```javascript
 // NPM module
