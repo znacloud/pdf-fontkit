@@ -1,12 +1,13 @@
-import babel from 'rollup-plugin-babel';
-import nodeResolve from 'rollup-plugin-node-resolve';
+import babel from '@rollup/plugin-babel';
+import nodeResolve from '@rollup/plugin-node-resolve';
 import nodeBuiltins from 'rollup-plugin-node-builtins';
 import nodeGlobals from 'rollup-plugin-node-globals';
-import commonjs from 'rollup-plugin-commonjs';
-import json from 'rollup-plugin-json';
+import inject from '@rollup/plugin-inject';
+import commonjs from '@rollup/plugin-commonjs';
+import json from '@rollup/plugin-json';
 import { terser } from 'rollup-plugin-terser';
-import { plugin as analyze } from 'rollup-plugin-analyzer';
-import visualizer from 'rollup-plugin-visualizer';
+// import { plugin as analyze } from 'rollup-plugin-analyzer';
+// import visualizer from 'rollup-plugin-visualizer';
 
 const { UGLIFY, MODULE_TYPE } = process.env;
 
@@ -17,9 +18,10 @@ export default {
     format: MODULE_TYPE,
     strict: false,
   },
-  external: MODULE_TYPE === 'esm'
-    ? ['pako'] // pdf-lib will provide pako for us
-    : [],
+  external:
+    MODULE_TYPE === 'esm'
+      ? ['pako'] // pdf-lib will provide pako for us
+      : [],
   plugins: [
     // analyze(),
     // visualizer({
@@ -39,17 +41,19 @@ export default {
     json(),
     babel({
       babelrc: false,
-      presets: [
-        ['@babel/preset-env', { modules: false, loose: true }]
-      ],
+      presets: [['@babel/preset-env', { modules: false, loose: true }]],
       plugins: [
         ['@babel/plugin-proposal-decorators', { legacy: true }],
-        ['@babel/plugin-proposal-class-properties']
+        ['@babel/plugin-proposal-class-properties'],
       ],
-      runtimeHelpers: true
+      // runtimeHelpers: true,
+      babelHelpers: 'inline',
     }),
-    nodeGlobals(),
+    nodeGlobals({ buffer: false }),
     nodeBuiltins(),
+    inject({
+      Buffer: ['buffer', 'Buffer'],
+    }),
     UGLIFY === 'true' && terser(),
   ],
 };
