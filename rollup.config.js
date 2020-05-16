@@ -46,7 +46,6 @@ export default {
         ['@babel/plugin-proposal-decorators', { legacy: true }],
         ['@babel/plugin-proposal-class-properties'],
       ],
-      // runtimeHelpers: true,
       babelHelpers: 'inline',
     }),
     nodeGlobals({ buffer: false }),
