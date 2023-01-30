@@ -2,11 +2,12 @@
 
 This project is a fork of https://github.com/Hopding/fontkit created for use in https://github.com/Hopding/pdf-lib, with subsetting issues fixed.
 
+- Released to NPM as `pdf-fontkit`
+
 # Purpose of this Fork (Original)
 
 This project is a fork of https://github.com/foliojs/fontkit created for use in https://github.com/Hopding/pdf-lib.
 
-- Released to NPM as `pdf-fontkit`
 
 Listed below are changes that have been made in this fork:
 
