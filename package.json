@@ -1,6 +1,6 @@
 {
-  "name": "@pdf-lib/fontkit",
-  "version": "1.8.1",
+  "name": "pdf-fontkit",
+  "version": "1.8.9",
   "description": "An advanced font engine for Node and the browser",
   "main": "dist/fontkit.umd.js",
   "unpkg": "dist/fontkit.umd.min.js",
@@ -56,7 +56,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/Hopding/fontkit.git"
+    "url": "git://github.com/znacloud/pdf-fontkit.git"
   },
   "keywords": [
     "opentype",
@@ -72,8 +72,8 @@
     "Devon Govett <devongovett@gmail.com> (http://badassjs.com/)"
   ],
   "bugs": {
-    "url": "https://github.com/Hopding/fontkit/issues"
+    "url": "https://github.com/znacloud/pdf-fontkit/issues"
   },
   "license": "MIT",
-  "homepage": "https://github.com/Hopding/fontkit"
+  "homepage": "https://github.com/znacloud/pdf-fontkit"
 }

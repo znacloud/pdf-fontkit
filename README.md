@@ -1,42 +1,50 @@
 # Purpose of this Fork
+
+This project is a fork of https://github.com/Hopding/fontkit created for use in https://github.com/Hopding/pdf-lib, with subsetting issues fixed.
+
+# Purpose of this Fork (Original)
+
 This project is a fork of https://github.com/foliojs/fontkit created for use in https://github.com/Hopding/pdf-lib.
+
+- Released to NPM as `pdf-fontkit`
 
 Listed below are changes that have been made in this fork:
 
-* Store binary data as compressed base64 JSON so the `fs` module isn't needed to read it back:
-  * [968e35c](https://github.com/Hopding/fontkit/commit/968e35c158589294e9543818f56d0b229b95a475)
-  * [99a35c7](/Hopding/fontkit/commit/99a35c7b0f0f6549d7727bcbc1ddabb7f9ca19bf)
-  * [2f1445d](/Hopding/fontkit/commit/2f1445d9a3f8426bc259690819eea8306a98545a)
-  * [f674bf2-R24](https://github.com/Hopding/fontkit/commit/f674bf2e3c8a8e0a34083e19f0abe65df20520e3#diff-b61f8676a8a37c519e9c3c86c4676208R24), [f674bf2-R13](https://github.com/Hopding/fontkit/commit/f674bf2e3c8a8e0a34083e19f0abe65df20520e3#diff-a73febb5d14ad8d9d7ab6ac378a698aaR13)
-* Rewrote `Makefile` to `Makefile.js` using `shelljs`:
-  * [a246e7f](https://github.com/Hopding/fontkit/commit/a246e7fda8c0bb5df4be355a993e0ba59f07300e)
-* Update to Babel 7:
-  * [70049f8](https://github.com/Hopding/fontkit/commit/70049f8f038145cc0caca83c75e0b76f49d11f52)
-  * [8d5b29b](https://github.com/Hopding/fontkit/commit/8d5b29bd00b752a6ab9348e6be1997e201055d31)
-* Build UMD modules:
-  * [cce995c](https://github.com/Hopding/fontkit/commit/cce995c3378c35b247ed2965e15eb92ffad9ea09)
-  * [08cacef](https://github.com/Hopding/fontkit/commit/08cacefa3e745f83a2c95051e38985b02aa2f16d)
-* Build ES modules:
-  * [dbe8e9d](https://github.com/Hopding/fontkit/commit/dbe8e9da4e8f2e23f507ba5a767a8109e81fb7ab)
-  * [9363d1f](https://github.com/Hopding/fontkit/commit/9363d1f8e97985d8a94ee6dac1fac39631ee3c77)
-* Bundle Node dependencies (`stream`, `util`, `Buffer`) into UMD and ES modules so consumers of this lib don't have to deal with them:
-  * [9363d1f](https://github.com/Hopding/fontkit/commit/9363d1f8e97985d8a94ee6dac1fac39631ee3c77)
-* Accept `Uint8Array` objects for font data instead of `Buffer` objects, so consumers can stick to plain JS regardless of their environment:
-  * [9363d1f-R12](https://github.com/Hopding/fontkit/commit/9363d1f8e97985d8a94ee6dac1fac39631ee3c77#diff-d7e697eff3913f1acaacac8002c3b05eR12)
-* Add TypeScript declaration file:
-  * [387ebc4](https://github.com/Hopding/fontkit/commit/387ebc418cc04be51d82d39e05f4db01b1bf063f)
-  * [3bafdbc](https://github.com/Hopding/fontkit/commit/3bafdbc3656ebba5251f8d4dc77dcc4b6c11afa6)
-  * [b0241e7](https://github.com/Hopding/fontkit/commit/b0241e7c30cdb83bda6867aa8c9229c1ab1cb8e3)
-* Remove calls to `new Function()` to allow usage on CSP sites:
-  * [e3dcc8a](https://github.com/Hopding/fontkit/commit/e3dcc8aad014081b8106c47d89049ba9e6f3dd48)
-* Released to NPM as `@pdf-lib/fontkit`
-  * [873b05d](https://github.com/Hopding/fontkit/commit/873b05d23aecb9f0142fc3ebda593fd2a7d81c17)
+- Store binary data as compressed base64 JSON so the `fs` module isn't needed to read it back:
+  - [968e35c](https://github.com/Hopding/fontkit/commit/968e35c158589294e9543818f56d0b229b95a475)
+  - [99a35c7](/Hopding/fontkit/commit/99a35c7b0f0f6549d7727bcbc1ddabb7f9ca19bf)
+  - [2f1445d](/Hopding/fontkit/commit/2f1445d9a3f8426bc259690819eea8306a98545a)
+  - [f674bf2-R24](https://github.com/Hopding/fontkit/commit/f674bf2e3c8a8e0a34083e19f0abe65df20520e3#diff-b61f8676a8a37c519e9c3c86c4676208R24), [f674bf2-R13](https://github.com/Hopding/fontkit/commit/f674bf2e3c8a8e0a34083e19f0abe65df20520e3#diff-a73febb5d14ad8d9d7ab6ac378a698aaR13)
+- Rewrote `Makefile` to `Makefile.js` using `shelljs`:
+  - [a246e7f](https://github.com/Hopding/fontkit/commit/a246e7fda8c0bb5df4be355a993e0ba59f07300e)
+- Update to Babel 7:
+  - [70049f8](https://github.com/Hopding/fontkit/commit/70049f8f038145cc0caca83c75e0b76f49d11f52)
+  - [8d5b29b](https://github.com/Hopding/fontkit/commit/8d5b29bd00b752a6ab9348e6be1997e201055d31)
+- Build UMD modules:
+  - [cce995c](https://github.com/Hopding/fontkit/commit/cce995c3378c35b247ed2965e15eb92ffad9ea09)
+  - [08cacef](https://github.com/Hopding/fontkit/commit/08cacefa3e745f83a2c95051e38985b02aa2f16d)
+- Build ES modules:
+  - [dbe8e9d](https://github.com/Hopding/fontkit/commit/dbe8e9da4e8f2e23f507ba5a767a8109e81fb7ab)
+  - [9363d1f](https://github.com/Hopding/fontkit/commit/9363d1f8e97985d8a94ee6dac1fac39631ee3c77)
+- Bundle Node dependencies (`stream`, `util`, `Buffer`) into UMD and ES modules so consumers of this lib don't have to deal with them:
+  - [9363d1f](https://github.com/Hopding/fontkit/commit/9363d1f8e97985d8a94ee6dac1fac39631ee3c77)
+- Accept `Uint8Array` objects for font data instead of `Buffer` objects, so consumers can stick to plain JS regardless of their environment:
+  - [9363d1f-R12](https://github.com/Hopding/fontkit/commit/9363d1f8e97985d8a94ee6dac1fac39631ee3c77#diff-d7e697eff3913f1acaacac8002c3b05eR12)
+- Add TypeScript declaration file:
+  - [387ebc4](https://github.com/Hopding/fontkit/commit/387ebc418cc04be51d82d39e05f4db01b1bf063f)
+  - [3bafdbc](https://github.com/Hopding/fontkit/commit/3bafdbc3656ebba5251f8d4dc77dcc4b6c11afa6)
+  - [b0241e7](https://github.com/Hopding/fontkit/commit/b0241e7c30cdb83bda6867aa8c9229c1ab1cb8e3)
+- Remove calls to `new Function()` to allow usage on CSP sites:
+  - [e3dcc8a](https://github.com/Hopding/fontkit/commit/e3dcc8aad014081b8106c47d89049ba9e6f3dd48)
+- Released to NPM as `@pdf-lib/fontkit`
+  - [873b05d](https://github.com/Hopding/fontkit/commit/873b05d23aecb9f0142fc3ebda593fd2a7d81c17)
 
 Also see
-* https://github.com/Hopding/unicode-properties
-* https://github.com/Hopding/brotli.js
-* https://github.com/Hopding/restructure
-* https://github.com/Hopding/png-ts
+
+- https://github.com/Hopding/unicode-properties
+- https://github.com/Hopding/brotli.js
+- https://github.com/Hopding/restructure
+- https://github.com/Hopding/png-ts
 
 # fontkit
 
@@ -44,47 +52,49 @@ Fontkit is an advanced font engine for Node and the browser, used by [PDFKit](ht
 
 ## Features
 
-* Suports TrueType (.ttf), OpenType (.otf), WOFF, WOFF2, TrueType Collection (.ttc), and Datafork TrueType (.dfont) font files
-* Supports mapping characters to glyphs, including support for ligatures and other advanced substitutions (see below)
-* Supports reading glyph metrics and laying out glyphs, including support for kerning and other advanced layout features (see below)
-* Advanced OpenType features including glyph substitution (GSUB) and positioning (GPOS)
-* Apple Advanced Typography (AAT) glyph substitution features (morx table)
-* Support for getting glyph vector paths and converting them to SVG paths, or rendering them to a graphics context
-* Supports TrueType (glyf) and PostScript (CFF) outlines
-* Support for color glyphs (e.g. emoji), including Apple’s SBIX table, and Microsoft’s COLR table
-* Support for AAT variation glyphs, allowing for nearly infinite design control over weight, width, and other axes.
-* Font subsetting support - create a new font including only the specified glyphs
+- Suports TrueType (.ttf), OpenType (.otf), WOFF, WOFF2, TrueType Collection (.ttc), and Datafork TrueType (.dfont) font files
+- Supports mapping characters to glyphs, including support for ligatures and other advanced substitutions (see below)
+- Supports reading glyph metrics and laying out glyphs, including support for kerning and other advanced layout features (see below)
+- Advanced OpenType features including glyph substitution (GSUB) and positioning (GPOS)
+- Apple Advanced Typography (AAT) glyph substitution features (morx table)
+- Support for getting glyph vector paths and converting them to SVG paths, or rendering them to a graphics context
+- Supports TrueType (glyf) and PostScript (CFF) outlines
+- Support for color glyphs (e.g. emoji), including Apple’s SBIX table, and Microsoft’s COLR table
+- Support for AAT variation glyphs, allowing for nearly infinite design control over weight, width, and other axes.
+- Font subsetting support - create a new font including only the specified glyphs
 
 ## Example
 
 ```js
-import fontkit from '@pdf-lib/fontkit';
-import fs from 'fs';
+import fontkit from "@pdf-lib/fontkit";
+import fs from "fs";
 
 // open a font synchronously
-const fontData = fs.readFileSync('font.ttf');
+const fontData = fs.readFileSync("font.ttf");
 const font = fontkit.create(fontData);
 
 // layout a string, using default shaping features.
 // returns a GlyphRun, describing glyphs and positions.
-const run = font.layout('hello world!');
+const run = font.layout("hello world!");
 
 // get an SVG path for a glyph
 const svg = run.glyphs[0].path.toSVG();
 
 // create a font subset
 const subset = font.createSubset();
-run.glyphs.forEach(function(glyph) {
+run.glyphs.forEach(function (glyph) {
   subset.includeGlyph(glyph);
 });
 
-subset.encodeStream()
-      .pipe(fs.createWriteStream('subset.ttf'));
+subset.encodeStream().pipe(fs.createWriteStream("subset.ttf"));
 ```
 
 ## Installation
+
 ### NPM Module
+
 To install the latest stable version:
+
 ```bash
 # With npm
 npm install --save @pdf-lib/fontkit
@@ -92,21 +102,23 @@ npm install --save @pdf-lib/fontkit
 # With yarn
 yarn add  @pdf-lib/fontkit
 ```
+
 This assumes you're using [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/lang/en/) as your package manager.
 
 ### UMD Module
+
 You can also download `@pdf-lib/fontkit` as a UMD module from [unpkg](https://unpkg.com/#/). The UMD builds have been compiled to ES5, so they should work [in any modern browser](https://caniuse.com/#feat=es5). UMD builds are useful if you aren't using a package manager or module bundler. For example, you can use them directly in the `<script>` tag of an HTML page.
 
 The following builds are available:
 
-* https://unpkg.com/@pdf-lib/fontkit/dist/fontkit.umd.js
-* https://unpkg.com/@pdf-lib/fontkit/dist/fontkit.umd.min.js
+- https://unpkg.com/@pdf-lib/fontkit/dist/fontkit.umd.js
+- https://unpkg.com/@pdf-lib/fontkit/dist/fontkit.umd.min.js
 
 When using a UMD build, you will have access to a global `window.fontkit` variable. This variable contains the object exported by `@pdf-lib/fontkit`. For example:
 
 ```javascript
 // NPM module
-import fontkit from '@pdf-lib/fontkit';
+import fontkit from "@pdf-lib/fontkit";
 
 // UMD module
 var fontkit = window.fontkit;
@@ -126,33 +138,33 @@ There are several different types of font objects that are returned by fontkit d
 
 The following properties are strings (or null if the font does not contain strings for them) describing the font, as specified by the font creator.
 
-* `postscriptName`
-* `fullName`
-* `familyName`
-* `subfamilyName`
-* `copyright`
-* `version`
+- `postscriptName`
+- `fullName`
+- `familyName`
+- `subfamilyName`
+- `copyright`
+- `version`
 
 ### Metrics
 
 The following properties describe the general metrics of the font. See [here](http://www.freetype.org/freetype2/docs/glyphs/glyphs-3.html) for a good overview of how all of these properties relate to one another.
 
-* `unitsPerEm` - the size of the font’s internal coordinate grid
-* `ascent` - the font’s [ascender](http://en.wikipedia.org/wiki/Ascender_(typography))
-* `descent` - the font’s [descender](http://en.wikipedia.org/wiki/Descender)
-* `lineGap` - the amount of space that should be included between lines
-* `underlinePosition` - the offset from the normal underline position that should be used
-* `underlineThickness` - the weight of the underline that should be used
-* `italicAngle` - if this is an italic font, the angle the cursor should be drawn at to match the font design
-* `capHeight` - the height of capital letters above the baseline. See [here](http://en.wikipedia.org/wiki/Cap_height) for more details.
-* `xHeight`- the height of lower case letters. See [here](http://en.wikipedia.org/wiki/X-height) for more details.
-* `bbox` - the font’s bounding box, i.e. the box that encloses all glyphs in the font
+- `unitsPerEm` - the size of the font’s internal coordinate grid
+- `ascent` - the font’s [ascender](<http://en.wikipedia.org/wiki/Ascender_(typography)>)
+- `descent` - the font’s [descender](http://en.wikipedia.org/wiki/Descender)
+- `lineGap` - the amount of space that should be included between lines
+- `underlinePosition` - the offset from the normal underline position that should be used
+- `underlineThickness` - the weight of the underline that should be used
+- `italicAngle` - if this is an italic font, the angle the cursor should be drawn at to match the font design
+- `capHeight` - the height of capital letters above the baseline. See [here](http://en.wikipedia.org/wiki/Cap_height) for more details.
+- `xHeight`- the height of lower case letters. See [here](http://en.wikipedia.org/wiki/X-height) for more details.
+- `bbox` - the font’s bounding box, i.e. the box that encloses all glyphs in the font
 
 ### Other properties
 
-* `numGlyphs` - the number of glyphs in the font
-* `characterSet` - an array of all of the unicode code points supported by the font
-* `availableFeatures` - an array of all [OpenType feature tags](https://www.microsoft.com/typography/otspec/featuretags.htm) (or mapped AAT tags) supported by the font (see below for a description of this)
+- `numGlyphs` - the number of glyphs in the font
+- `characterSet` - an array of all of the unicode code points supported by the font
+- `availableFeatures` - an array of all [OpenType feature tags](https://www.microsoft.com/typography/otspec/featuretags.htm) (or mapped AAT tags) supported by the font (see below for a description of this)
 
 ### Character to glyph mapping
 
@@ -242,12 +254,12 @@ You do not create glyph objects directly. They are created by various methods on
 
 ### Properties
 
-* `id` - the glyph id in the font
-* `codePoints` - an array of unicode code points that are represented by this glyph. There can be multiple code points in the case of ligatures and other glyphs that represent multiple visual characters.
-* `path` - a vector Path object representing the glyph
-* `bbox` - the glyph’s bounding box, i.e. the rectangle that encloses the glyph outline as tightly as possible.
-* `cbox` - the glyph’s control box. This is often the same as the bounding box, but is faster to compute. Because of the way bezier curves are defined, some of the control points can be outside of the bounding box. Where `bbox` takes this into account, `cbox` does not. Thus, `cbox` is less accurate, but faster to compute. See [here](http://www.freetype.org/freetype2/docs/glyphs/glyphs-6.html#section-2) for a more detailed description.
-* `advanceWidth` - the glyph’s advance width.
+- `id` - the glyph id in the font
+- `codePoints` - an array of unicode code points that are represented by this glyph. There can be multiple code points in the case of ligatures and other glyphs that represent multiple visual characters.
+- `path` - a vector Path object representing the glyph
+- `bbox` - the glyph’s bounding box, i.e. the rectangle that encloses the glyph outline as tightly as possible.
+- `cbox` - the glyph’s control box. This is often the same as the bounding box, but is faster to compute. Because of the way bezier curves are defined, some of the control points can be outside of the bounding box. Where `bbox` takes this into account, `cbox` does not. Thus, `cbox` is less accurate, but faster to compute. See [here](http://www.freetype.org/freetype2/docs/glyphs/glyphs-6.html#section-2) for a more detailed description.
+- `advanceWidth` - the glyph’s advance width.
 
 ### `glyph.render(ctx, size)`
 
@@ -322,4 +334,5 @@ Includes the given glyph object or glyph ID in the subset.
 Returns a [stream](https://nodejs.org/api/stream.html) containing the encoded font file that can be piped to a destination, such as a file.
 
 ## License
+
 [MIT](https://choosealicense.com/licenses/mit/)

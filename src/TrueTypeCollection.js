@@ -1,31 +1,31 @@
-import r from '@pdf-lib/restructure';
-import TTFFont from './TTFFont';
-import Directory from './tables/directory';
-import tables from './tables';
+import r from "@pdf-lib/restructure";
+import TTFFont from "./TTFFont";
+import Directory from "./tables/directory";
+import tables from "./tables";
 
 let TTCHeader = new r.VersionedStruct(r.uint32, {
   0x00010000: {
-    numFonts:   r.uint32,
-    offsets:    new r.Array(r.uint32, 'numFonts')
+    numFonts: r.uint32,
+    offsets: new r.Array(r.uint32, "numFonts"),
   },
   0x00020000: {
-    numFonts:   r.uint32,
-    offsets:    new r.Array(r.uint32, 'numFonts'),
-    dsigTag:    r.uint32,
+    numFonts: r.uint32,
+    offsets: new r.Array(r.uint32, "numFonts"),
+    dsigTag: r.uint32,
     dsigLength: r.uint32,
-    dsigOffset: r.uint32
-  }
+    dsigOffset: r.uint32,
+  },
 });
 
 export default class TrueTypeCollection {
   static probe(buffer) {
-    return buffer.toString('ascii', 0, 4) === 'ttcf';
+    return buffer.toString("ascii", 0, 4) === "ttcf";
   }
 
   constructor(stream) {
     this.stream = stream;
-    if (stream.readString(4) !== 'ttcf') {
-      throw new Error('Not a TrueType collection');
+    if (stream.readString(4) !== "ttcf") {
+      throw new Error("Not a TrueType collection");
     }
 
     this.header = TTCHeader.decode(stream);
@@ -36,7 +36,11 @@ export default class TrueTypeCollection {
       let stream = new r.DecodeStream(this.stream.buffer);
       stream.pos = offset;
       let font = new TTFFont(stream);
-      if (font.postscriptName === name) {
+      if (
+        (Buffer.isBuffer(font.postscriptName) &&
+          font.postscriptName.equals(name)) ||
+        font.postscriptName === name
+      ) {
         return font;
       }
     }
