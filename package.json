@@ -1,6 +1,6 @@
 {
   "name": "@pdf-lib/fontkit",
-  "version": "1.1.0",
+  "version": "1.8.1",
   "description": "An advanced font engine for Node and the browser",
   "main": "dist/fontkit.umd.js",
   "unpkg": "dist/fontkit.umd.min.js",
@@ -41,7 +41,7 @@
     "dfa": "^1.0.0",
     "esdoc": "^0.4.8",
     "esdoc-es7-plugin": "0.0.3",
-    "iconv-lite": "^0.4.13",
+    "iconv-lite": "^0.4.24",
     "mocha": "^2.0.1",
     "nyc": "^10.3.2",
     "rollup": "^2.10.2",

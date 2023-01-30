@@ -4,6 +4,11 @@ const formats = [];
 
 const fontkit = {
   logErrors: false,
+  defaultLanguage: 'en',
+
+  setDefaultLanguage: function(lang = 'en') => {
+    fontkit.defaultLanguage = lang;
+  };
 
   registerFormat: (format) => {
     formats.push(format);
