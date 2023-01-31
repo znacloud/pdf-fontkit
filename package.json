@@ -12,6 +12,14 @@
     "test": "MODULE_TYPE=commonjs mocha",
     "coverage": "cross-env BABEL_ENV=cover nyc mocha"
   },
+  "files": [
+    "dist/",
+    "es/",
+    "lib/",
+    "fontkit.d.ts",
+    "package.json",
+    "README.md"
+  ],
   "dependencies": {
     "pako": "^1.0.6"
   },
